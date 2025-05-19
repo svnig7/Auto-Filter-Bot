@@ -1,5 +1,6 @@
 pyrogram
 tgcrypto
+python-3.11.9          # in runtime.txt (Heroku)
 pymongo[srv]==3.12.3
 motor==2.5.1
 umongo==3.0.0
