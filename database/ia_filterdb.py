@@ -4,7 +4,8 @@ import base64
 from struct import pack
 from pyrogram.file_id import FileId
 from pymongo.errors import DuplicateKeyError
-from umongo import Instance, Document, fields
+from umongo import Instance, Document
+from umongo.fields import StringField, IntegerField
 from motor.motor_asyncio import AsyncIOMotorClient
 from marshmallow.exceptions import ValidationError
 from info import DATABASE_URL, DATABASE_NAME, COLLECTION_NAME, MAX_BTN
@@ -15,13 +16,13 @@ instance = Instance.from_db(db)
 
 @instance.register
 class Media(Document):
-    file_id = fields.StringField(attribute='_id', unique=True)
-    file_name = fields.StringField(required=True)
-    file_size = fields.IntegerField(required=True)
-    caption = fields.StringField(allow_none=True)
+    file_id = StringField(attribute='_id')
+    file_name = StringField(required=True)
+    file_size = IntegerField(required=True)
+    caption = StringField(allow_none=True)
 
     class Meta:
-        indexes = ('$file_name',)
+        indexes = ('$file_name', )
         collection_name = COLLECTION_NAME
 
 # Clean strings from unwanted characters
