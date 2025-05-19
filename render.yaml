@@ -2,7 +2,6 @@ services:
   - type: web
     name: auto-filter-bot
     env: python
-    plan: free
     buildCommand: "pip install -r requirements.txt"
     startCommand: "python3 bot.py"
     envVars:
@@ -12,16 +11,10 @@ services:
         value: your_api_hash
       - key: BOT_TOKEN
         value: your_bot_token
-      - key: DB_URL
-        value: your_mongodb_uri
-      - key: BOT_USERNAME
-        value: your_bot_username
-      - key: LOG_CHANNEL
-        value: -100xxxxxxxxx
-      - key: BIN_CHANNEL
-        value: -100yyyyyyyyy
-      - key: SUPPORT_GROUP
-        value: -100zzzzzzzzz
+      - key: DATABASE_URL
+        value: your_mongodb_url
+      - key: URL
+        value: https://your-render-url.onrender.com/  # <- must end with /
       - key: PORT
-        value: 10000  # Render will override this, but it's fine to include
-        
+        value: 10000  # Render will override this anyway
+      # ... (rest of your vars)
