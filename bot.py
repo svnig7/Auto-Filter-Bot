@@ -31,7 +31,7 @@ class Bot(Client):
             with open("restart.txt") as file:
                 chat_id, msg_id = map(int, file)
             try:
-                await self.edit_message_text(chat_id=chat_id, message_id=msg_id, text='Restarted Successfully!')
+                await self.edit_message_text(chat_id=chat_id, message_id=msg_id, text='Restarted Successfully !')
             except:
                 pass
             os.remove('restart.txt')
@@ -47,7 +47,7 @@ class Bot(Client):
         await app.setup()
         await web.TCPSite(app, "0.0.0.0", PORT).start()
         try:
-            await self.send_message(chat_id=LOG_CHANNEL, text=f"<b>{me.mention} Restarted! 🤖</b>")
+            await self.send_message(chat_id=LOG_CHANNEL, text=f"<b>{me.mention} ʀᴇsᴛᴀʀᴛᴇᴅ ! 🤖</b>")
         except:
             print("Error - Make sure bot admin in LOG_CHANNEL, exiting now")
             exit()
@@ -58,7 +58,7 @@ class Bot(Client):
             print("Error - Make sure bot admin in BIN_CHANNEL, exiting now")
             exit()
         try:
-            await self.send_message(chat_id=SUPPORT_GROUP, text=f"<b>{me.mention} Restarted! 🤖</b>")
+            await self.send_message(chat_id=SUPPORT_GROUP, text=f"<b>{me.mention} ʀᴇsᴛᴀʀᴛᴇᴅ ! 🤖</b>")
         except:
             print("Error - Make sure bot admin in SUPPORT GROUP, exiting now")
             exit()
@@ -67,7 +67,7 @@ class Bot(Client):
 
     async def stop(self, *args):
         await super().stop()
-        print("Bot Stopped! Bye...")
+        print("Bot Stopped ! Bye...")
 
 
     async def iter_messages(self: Client, chat_id: Union[int, str], limit: int, offset: int = 0) -> Optional[AsyncGenerator["types.Message", None]]:
