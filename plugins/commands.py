@@ -522,16 +522,16 @@ async def give_premium_cmd_handler(client, message):
             expiry_time = datetime.datetime.now() + datetime.timedelta(seconds=seconds)
             user_data = {"id": user_id, "expiry_time": expiry_time} 
             await db.update_user(user_data)  # Use the update_user method to update or insert user data
-            await message.reply_text("Premium access added to the user.")
+            await message.reply_text("ᴘʀᴇᴍɪᴜᴍ ᴀᴄᴄᴇss ᴀᴅᴅᴇᴅ ᴛᴏ ᴛʜᴇ ᴜsᴇʀ.")
             
             await client.send_message(
                 chat_id=user_id,
                 text=f"<b>ᴘʀᴇᴍɪᴜᴍ ᴀᴅᴅᴇᴅ ᴛᴏ ʏᴏᴜʀ ᴀᴄᴄᴏᴜɴᴛ ꜰᴏʀ {time} ᴇɴᴊᴏʏ 😀\n</b>",                
             )
         else:
-            await message.reply_text("Invalid time format. Please use '1day for days', '1hour for hours', or '1min for minutes', or '1month for months' or '1year for year'")
+            await message.reply_text("ɪɴᴠᴀʟɪᴅ ᴛɪᴍᴇ ғᴏʀᴍᴀᴛ. ᴘʟᴇᴀsᴇ ᴜsᴇ '1day ғᴏʀ ᴅᴀʏs', '1hour ғᴏʀ ʜᴏᴜʀs', '1min ғᴏʀ ᴍɪɴᴜᴛᴇs', '1month ғᴏʀ ᴍᴏɴᴛʜs', '1year ғᴏʀ ʏᴇᴀʀs'")
     else:
-        await message.reply_text("<b>Usage: /add_premium user_id time \n\nExample /add_premium 1252789 10day \n\n(e.g. for time units '1day for days', '1hour for hours', or '1min for minutes', or '1month for months' or '1year for year')</b>")
+        await message.reply_text("<b>ᴜsᴀɢᴇ : /add_premium ᴜsᴇʀɪᴅ ᴛɪᴍᴇ \n\nᴇxᴀᴍᴘʟᴇ /add_premium 1234567 10day \n\n( ᴇ.ɢ. ғᴏʀ ᴛɪᴍᴇ ᴜɴɪᴛs '1day ғᴏʀ ᴅᴀʏs', '1hour ғᴏʀ ʜᴏᴜʀs', '1min ғᴏʀ ᴍɪɴᴜᴛᴇs', '1month ғᴏʀ ᴍᴏɴᴛʜs', '1year ғᴏʀ ʏᴇᴀʀs' )</b>")
         
 @Client.on_message(filters.command("remove_premium"))
 async def remove_premium_cmd_handler(client, message):
@@ -546,26 +546,26 @@ async def remove_premium_cmd_handler(client, message):
             expiry_time = datetime.datetime.now() + datetime.timedelta(seconds=seconds)
             user_data = {"id": user_id, "expiry_time": expiry_time}  # Using "id" instead of "user_id"
             await db.update_user(user_data)  # Use the update_user method to update or insert user data
-            await message.reply_text("Premium access removed to the user.")
+            await message.reply_text("ᴘʀᴇᴍɪᴜᴍ ᴀᴄᴄᴇss ʀᴇᴍᴏᴠᴇᴅ ᴛᴏ ᴛʜᴇ ᴜsᴇʀ.")
             await client.send_message(
                 chat_id=user_id,
-                text=f"<b>premium removed by admins \n\n Contact Admin if this is mistake \n\n 👮 Admin : @Rk_botowner \n</b>",                
+                text=f"<b>ᴘʀᴇᴍɪᴜᴍ ʀᴇᴍᴏᴠᴇᴅ ʙʏ ᴀᴅᴍɪɴs \n\n ᴄᴏɴᴛᴀᴄᴛ ᴀᴅᴍɪɴ ɪғ ᴛʜɪs ɪs ᴍɪsᴛᴀᴋᴇ \n\n 👮 ᴀᴅᴍɪɴ : @cntct_7bot \n</b>",                
             )
         else:
-            await message.reply_text("Invalid time format.'")
+            await message.reply_text("ɪɴᴠᴀʟɪᴅ ᴛɪᴍᴇ ғᴏʀᴍᴀᴛ.'")
     else:
-        await message.reply_text("Usage: /remove_premium user_id")
+        await message.reply_text("ᴜsᴀɢᴇ: /remove_premium ᴜsᴇʀɪᴅ")
         
 @Client.on_message(filters.command("plans"))
 async def plans_cmd_handler(client, message):                
     btn = [            
-        [InlineKeyboardButton("ꜱᴇɴᴅ ᴘᴀʏᴍᴇɴᴛ ʀᴇᴄᴇɪᴘᴛ 🧾", url="t.me/Rk_botowner")],
+        [InlineKeyboardButton("ꜱᴇɴᴅ ᴘᴀʏᴍᴇɴᴛ ʀᴇᴄᴇɪᴘᴛ 🧾", url="https://t.me/cntct_7bot")],
         [InlineKeyboardButton("⚠️ ᴄʟᴏsᴇ / ᴅᴇʟᴇᴛᴇ ⚠️", callback_data="close_data")]
     ]
     reply_markup = InlineKeyboardMarkup(btn)
     await message.reply_photo(
         photo=PAYMENT_QR,
-        caption="**Pʀᴇᴍɪᴜᴍ Fᴇᴀᴛᴜʀᴇs 🎁\n\n☆ No Need To Verify\n☆ Ad Free Experience\n☆ Unlimited Movie And Series",
+        caption="**ᴘʀᴇᴍɪᴜᴍ ғᴇᴀᴛᴜʀᴇs 🎁\n\n☆ ɴᴏ ɴᴇᴇᴅ ᴛᴏ ᴠᴇʀɪғʏ\n☆ ᴀᴅ ғʀᴇᴇ ᴇxᴘᴇʀɪᴇɴᴄᴇ\n☆ ᴜɴʟɪᴍɪᴛᴇᴅ ᴍᴏᴠɪᴇ ᴀɴᴅ ᴛᴠ sᴇʀɪᴇs",
         reply_markup=reply_markup
     )
         
@@ -575,7 +575,7 @@ async def check_plans_cmd(client, message):
     if await db.has_premium_access(user_id):         
         remaining_time = await db.check_remaining_uasge(user_id)             
         expiry_time = remaining_time + datetime.datetime.now()
-        await message.reply_text(f"**Your plans details are :\n\nRemaining Time : {remaining_time}\n\nExpirytime : {expiry_time}**")
+        await message.reply_text(f"**ʏᴏᴜʀ ᴘʟᴀɴs ᴅᴇᴛᴀɪʟs ᴀʀᴇ :\n\nʀᴇᴍᴀɪɴɪɴɢ ᴛɪᴍᴇ : {remaining_time}\n\nᴇxᴘɪʀᴇ ᴛɪᴍᴇ : {expiry_time}**")
     else:
         btn = [ 
             [InlineKeyboardButton("ɢᴇᴛ ғʀᴇᴇ ᴛʀᴀɪʟ ғᴏʀ 𝟻 ᴍɪɴᴜᴛᴇꜱ ☺️", callback_data="get_trail")],
@@ -584,6 +584,6 @@ async def check_plans_cmd(client, message):
         ]
         reply_markup = InlineKeyboardMarkup(btn)
         m=await message.reply_sticker("CAACAgIAAxkBAAIBTGVjQbHuhOiboQsDm35brLGyLQ28AAJ-GgACglXYSXgCrotQHjibHgQ")         
-        await message.reply_text(f"**😢 You Don't Have Any Premium Subscription.\n\n Check Out Our Premium /plans**",reply_markup=reply_markup)
+        await message.reply_text(f"**😢 ʏᴏᴜ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ ᴀɴʏ ᴘʀᴇᴍɪᴜᴍ sᴜʙsᴄʀɪᴘᴛɪᴏɴ.\n\n ᴄʜᴇᴄᴋ ᴏᴜᴛ ᴏᴜʀ ᴘʀᴇᴍɪᴜᴍ /plans**",reply_markup=reply_markup)
         await asyncio.sleep(2)
         await m.delete()
