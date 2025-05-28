@@ -12,23 +12,22 @@ import logging
 async def showid(client, message):
     chat_type = message.chat.type
     if chat_type == enums.ChatType.PRIVATE:
-        await message.reply_text(f'★ User ID: <code>{message.from_user.id}</code>')
+        await message.reply_text(f'★ ᴜsᴇʀ ɪᴅ : <code>{message.from_user.id}</code>')
 
     elif chat_type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
-        await message.reply_text(f'★ Group ID: <code>{message.chat.id}</code>')
+        await message.reply_text(f'★ ɢʀᴏᴜᴘ ɪᴅ : <code>{message.chat.id}</code>')
 
     elif chat_type == enums.ChatType.CHANNEL:
-        await message.reply_text(f'★ Channel ID: <code>{message.chat.id}</code>')
-
+        await message.reply_text(f'★ ᴄʜᴀɴɴᴇʟ ɪᴅ : <code>{message.chat.id}</code>')
 
 @Client.on_message(filters.command('speedtest') & filters.user(ADMINS))
 async def speedtest(client, message):
     #from - https://github.com/weebzone/WZML-X/blob/master/bot/modules/speedtest.py
-    msg = await message.reply_text("Initiating Speedtest...")
+    msg = await message.reply_text("ɪɴɪᴛɪᴀᴛɪɴɢ sᴘᴇᴇᴅᴛᴇsᴛ...")
     try:
         speed = Speedtest()
     except ConfigRetrievalError:
-        await msg.edit("Can't connect to Server at the Moment, Try Again Later !")
+        await msg.edit("ᴄᴀɴ'ᴛ ᴄᴏɴɴᴇᴄᴛ ᴛᴏ sᴇʀᴠᴇʀ ᴀᴛ ᴛʜᴇ ᴍᴏᴍᴇɴᴛ, ᴛʀʏ ᴀɢᴀɪɴ ʟᴀᴛᴇʀ !")
         return
     speed.get_best_server()
     speed.download()
@@ -37,29 +36,29 @@ async def speedtest(client, message):
     result = speed.results.dict()
     photo = result['share']
     text = f'''
-➲ <b>SPEEDTEST INFO</b>
-┠ <b>Upload:</b> <code>{get_size(result['upload'])}/s</code>
-┠ <b>Download:</b>  <code>{get_size(result['download'])}/s</code>
-┠ <b>Ping:</b> <code>{result['ping']} ms</code>
-┠ <b>Time:</b> <code>{datetime.strptime(result['timestamp'], "%Y-%m-%dT%H:%M:%S.%fZ").strftime("%Y-%m-%d %H:%M:%S")}</code>
-┠ <b>Data Sent:</b> <code>{get_size(int(result['bytes_sent']))}</code>
-┖ <b>Data Received:</b> <code>{get_size(int(result['bytes_received']))}</code>
+➲ <b>sᴘᴇᴇᴅᴛᴇsᴛ ɪɴғᴏ</b>
+┠ <b>ᴜᴘʟᴏᴀᴅ :</b> <code>{get_size(result['upload'])}/s</code>
+┠ <b>ᴅᴏᴡɴʟᴏᴀᴅ :</b>  <code>{get_size(result['download'])}/s</code>
+┠ <b>ᴘɪɴɢ :</b> <code>{result['ping']} ms</code>
+┠ <b>ᴛɪᴍᴇ :</b> <code>{datetime.strptime(result['timestamp'], "%Y-%m-%dT%H:%M:%S.%fZ").strftime("%Y-%m-%d %H:%M:%S")}</code>
+┠ <b>ᴅᴀᴛᴀ sᴇɴᴛ :</b> <code>{get_size(int(result['bytes_sent']))}</code>
+┖ <b>ᴅᴀᴛᴀ ʀᴇᴄᴇɪᴠᴇᴅ :</b> <code>{get_size(int(result['bytes_received']))}</code>
 
-➲ <b>SPEEDTEST SERVER</b>
-┠ <b>Name:</b> <code>{result['server']['name']}</code>
-┠ <b>Country:</b> <code>{result['server']['country']}, {result['server']['cc']}</code>
-┠ <b>Sponsor:</b> <code>{result['server']['sponsor']}</code>
-┠ <b>Latency:</b> <code>{result['server']['latency']}</code>
-┠ <b>Latitude:</b> <code>{result['server']['lat']}</code>
-┖ <b>Longitude:</b> <code>{result['server']['lon']}</code>
+➲ <b>sᴘᴇᴇᴅᴛᴇsᴛ sᴇʀᴠᴇʀ</b>
+┠ <b>ɴᴀᴍᴇ :</b> <code>{result['server']['name']}</code>
+┠ <b>ᴄᴏᴜɴᴛʀʏ :</b> <code>{result['server']['country']}, {result['server']['cc']}</code>
+┠ <b>sᴘᴏɴsᴏʀ :</b> <code>{result['server']['sponsor']}</code>
+┠ <b>ʟᴀᴛᴇɴᴄʏ :</b> <code>{result['server']['latency']}</code>
+┠ <b>ʟᴀᴛɪᴛᴜᴅᴇ :</b> <code>{result['server']['lat']}</code>
+┖ <b>ʟᴏɴɢɪᴛᴜᴅᴇ :</b> <code>{result['server']['lon']}</code>
 
-➲ <b>CLIENT DETAILS</b>
-┠ <b>IP Address:</b> <code>{result['client']['ip']}</code>
-┠ <b>Latitude:</b> <code>{result['client']['lat']}</code>
-┠ <b>Longitude:</b> <code>{result['client']['lon']}</code>
-┠ <b>Country:</b> <code>{result['client']['country']}</code>
-┠ <b>ISP:</b> <code>{result['client']['isp']}</code>
-┖ <b>ISP Rating:</b> <code>{result['client']['isprating']}</code>
+➲ <b>ᴄʟɪᴇɴᴛ ᴅᴇᴛᴀɪʟs</b>
+┠ <b>ɪᴘ ᴀᴅᴅʀᴇss :</b> <code>{result['client']['ip']}</code>
+┠ <b>ʟᴀᴛɪᴛᴜᴅᴇ :</b> <code>{result['client']['lat']}</code>
+┠ <b>ʟᴏɴɢɪᴛᴜᴅᴇ :</b> <code>{result['client']['lon']}</code>
+┠ <b>ᴄᴏᴜɴᴛʀʏ :</b> <code>{result['client']['country']}</code>
+┠ <b>ɪsᴘ :</b> <code>{result['client']['isp']}</code>
+┖ <b>ɪsᴘ ʀᴀᴛɪɴɢ :</b> <code>{result['client']['isprating']}</code>
 '''
     await message.reply_photo(photo=photo, caption=text)
     await msg.delete()
