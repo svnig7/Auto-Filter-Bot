@@ -21,5 +21,5 @@ async def media_watch(message_id):
             heading = 'Watch - {}'.format(file_name)
             html = (await r.read()).replace('tag', tag) % (heading, file_name, src)
     else:
-        html = '<h1>This is not streamable file</h1>'
+        html = '<h1>ᴛʜɪs ɪs ɴᴏᴛ sᴛʀᴇᴀᴍᴀʙʟᴇ ғɪʟᴇ</h1>'
     return html
