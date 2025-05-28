@@ -18,7 +18,7 @@ async def media_watch(message_id):
     tag = mime_type.split('/')[0].strip()
     if tag == 'video':
         async with aiofiles.open('web/template/watch.html') as r:
-            heading = 'Watch - {}'.format(file_name)
+            heading = 'ᴡᴀᴛᴄʜ - {}'.format(file_name)
             html = (await r.read()).replace('tag', tag) % (heading, file_name, src)
     else:
         html = '<h1>ᴛʜɪs ɪs ɴᴏᴛ sᴛʀᴇᴀᴍᴀʙʟᴇ ғɪʟᴇ</h1>'
