@@ -7,18 +7,21 @@ from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 def upload_image_requests(image_path):
-    upload_url = "https://graph.org"
+    upload_url = "https://telegra.ph/upload"
 
     try:
         with open(image_path, 'rb') as file:
-            files = {'file': file} 
+            files = {'file': ('file', file, 'image/jpeg')}
             response = requests.post(upload_url, files=files)
 
             if response.status_code == 200:
-                return response.text.strip() 
+                result = response.json()
+                if isinstance(result, list) and "src" in result[0]:
+                    return "https://graph.org" + result[0]["src"]
+                else:
+                    raise Exception("ɪɴᴠᴀʟɪᴅ ʀᴇsᴘᴏɴsᴇ ғᴏʀᴍᴀᴛ ғʀᴏᴍ ᴛᴇʟᴇɢʀᴀᴘʜ.")
             else:
                 raise Exception(f"ᴜᴘʟᴏᴀᴅ ғᴀɪʟᴇᴅ ᴡɪᴛʜ sᴛᴀᴛᴜs ᴄᴏᴅᴇ {response.status_code}")
-
     except Exception as e:
         print(f"ᴇʀʀᴏʀ ᴅᴜʀɪɴɢ ᴜᴘʟᴏᴀᴅ : {e}")
         return None
