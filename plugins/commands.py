@@ -19,22 +19,22 @@ async def aiRes(_, message):
     if message.chat.id == SUPPORT_GROUP:
         asked = message.text.split(None, 1)[1]
         if not asked:
-            return await message.reply("Ask something after ask command!")
+            return await message.reply("ᴀsᴋ sᴏᴍᴇᴛʜɪɴɢ ᴀғᴛᴇʀ ᴀsᴋ ᴄᴏᴍᴍᴀɴᴅ !")
         thinkStc = await message.reply_sticker(sticker=random.choice(STICKERS_IDS))
         url = f"https://bisal-ai-api.vercel.app/biisal" 
         res = requests.post(url , data={'query' : asked})
         if res.status_code == 200:
             response = res.json().get("response")
             await thinkStc.delete()
-            await message.reply(f"<b>hey {message.from_user.mention()},\n{response.lstrip() if response.startswith(' ') else response}</b>")
+            await message.reply(f"<b>ʜᴇʏ {message.from_user.mention()},\n{response.lstrip() if response.startswith(' ') else response}</b>")
         else:
             await thinkStc.delete()
-            await message.reply("Mausam kharab hai ! Thode der mein try kre !\nor Report to Developer.")
+            await message.reply("ᴍᴀᴜsᴀᴍ ᴋʜᴀʀᴀʙ ʜᴀɪ ! ᴛʜᴏᴅɪ ᴅᴇʀ ᴍᴇɪɴ ᴛʀʏ ᴋʀᴇ !\nᴏʀ ʀᴇᴘᴏʀᴛ ᴛᴏ ᴅᴇᴠᴇʟᴏᴘᴇʀ.")
     else:
         btn = [[
-            InlineKeyboardButton('💡 Support Group 💡', url=SUPPORT_LINK)
+            InlineKeyboardButton('💡 ʀᴇᴏ̨ᴜᴇsᴛ ɢʀᴏᴜᴘ 💡', url=SUPPORT_LINK)
         ]]
-        await message.reply(f"<b>hey {message.from_user.mention},\n\nPlease use this command in support group.</b>", reply_markup=InlineKeyboardMarkup(btn))
+        await message.reply(f"<b>ʜᴇʏ {message.from_user.mention},\n\nᴘʟᴇᴀsᴇ ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ɪɴ ʀᴇᴏ̨ᴜᴇsᴛ ɢʀᴏᴜᴘ.</b>", reply_markup=InlineKeyboardMarkup(btn))
         
 @Client.on_message(filters.command("start") & filters.incoming)
 async def start(client, message):
@@ -48,7 +48,7 @@ async def start(client, message):
         wish = get_wish()
         btn = [[
             InlineKeyboardButton('⚡️ ᴜᴘᴅᴀᴛᴇs ᴄʜᴀɴɴᴇʟ ⚡️', url=UPDATES_LINK),
-            InlineKeyboardButton('💡 Support Group 💡', url=SUPPORT_LINK)
+            InlineKeyboardButton('💡 ʀᴇᴏ̨ᴜᴇsᴛ ɢʀᴏᴜᴘ 💡', url=SUPPORT_LINK)
         ]]
         await message.reply(text=f"<b>ʜᴇʏ {message.from_user.mention}, <i>{wish}</i>\nʜᴏᴡ ᴄᴀɴ ɪ ʜᴇʟᴘ ʏᴏᴜ??</b>", reply_markup=InlineKeyboardMarkup(btn))
         return 
@@ -63,15 +63,15 @@ async def start(client, message):
     
     if (len(message.command) != 2) or (len(message.command) == 2 and message.command[1] == 'start'):
         buttons = [[
-            InlineKeyboardButton('⤬ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ ⤬', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
+            InlineKeyboardButton('⤬ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ⤬', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
                 ],[
-                    InlineKeyboardButton('🌿 ꜱᴜᴘᴘᴏʀᴛ', callback_data="my_about"),
+                    InlineKeyboardButton('🌿 ᴀʙᴏᴜᴛ', callback_data="my_about"),
                     InlineKeyboardButton('👤 ᴏᴡɴᴇʀ', callback_data='my_owner')
                 ],[
-                    InlineKeyboardButton('🍁 ғᴇᴀᴛᴜʀᴇs', callback_data='help'),
+                    InlineKeyboardButton('🍁 ʜᴇʟᴘ', callback_data='help'),
                     InlineKeyboardButton('🔐 ᴘʀᴇᴍɪᴜᴍ', callback_data='buy_premium')
                 ],[
-                    InlineKeyboardButton('💰 ᴇᴀʀɴ ᴍᴏɴᴇʏ ʙʏ ʙᴏᴛ 💰', callback_data='earn')
+                    InlineKeyboardButton('💰 ᴇᴀʀɴ ᴍᴏɴᴇʏ 💰', callback_data='earn')
                   ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply_photo(
@@ -89,16 +89,16 @@ async def start(client, message):
         _, token = mc.split("_", 1)
         verify_status = await get_verify_status(message.from_user.id)
         if verify_status['verify_token'] != token:
-            return await message.reply("Your verify token is invalid.")
+            return await message.reply("ʏᴏᴜʀ ᴠᴇʀɪғʏ ᴛᴏᴋᴇɴ ɪs ɪɴᴠᴀʟɪᴅ.")
         await update_verify_status(message.from_user.id, is_verified=True, verified_time=time.time())
         if verify_status["link"] == "":
             reply_markup = None
         else:
             btn = [[
-                InlineKeyboardButton("📌 Get File 📌", url=f'https://t.me/{temp.U_NAME}?start={verify_status["link"]}')
+                InlineKeyboardButton("📌 ɢᴇᴛ ғɪʟᴇ 📌", url=f'https://t.me/{temp.U_NAME}?start={verify_status["link"]}')
             ]]
             reply_markup = InlineKeyboardMarkup(btn)
-        await message.reply(f"✅ You successfully verified until: {get_readable_time(VERIFY_EXPIRE)}", reply_markup=reply_markup, protect_content=True)
+        await message.reply(f"✅ ʏᴏᴜ ᴀʀᴇ sᴜᴄᴄᴇssғᴜʟʟʏ ᴠᴇʀɪғɪᴇᴅ ᴜɴᴛɪʟ : {get_readable_time(VERIFY_EXPIRE)}", reply_markup=reply_markup, protect_content=True)
         return
     
     verify_status = await get_verify_status(message.from_user.id)
@@ -108,11 +108,11 @@ async def start(client, message):
             await update_verify_status(message.from_user.id, verify_token=token, link="" if mc == 'inline_verify' else mc)
             link = await get_shortlink(SHORTLINK_URL, SHORTLINK_API, f'https://t.me/{temp.U_NAME}?start=verify_{token}')
             btn = [[
-                InlineKeyboardButton("🧿 Verify 🧿", url=link)
+                InlineKeyboardButton("🧿 ᴠᴇʀɪғʏ 🧿", url=link)
             ],[
-                InlineKeyboardButton('🗳 Tutorial 🗳', url=VERIFY_TUTORIAL)
+                InlineKeyboardButton('🗳 ᴛᴜᴛᴏʀɪᴀʟ 🗳', url=VERIFY_TUTORIAL)
             ]]
-            await message.reply("You not verified today! Kindly verify now. 🔐", reply_markup=InlineKeyboardMarkup(btn), protect_content=True)
+            await message.reply("ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴠᴇʀɪғɪᴇᴅ ᴛᴏᴅᴀʏ ! ᴋɪɴᴅʟʏ ᴠᴇʀɪғʏ ɴᴏᴡ. 🔐", reply_markup=InlineKeyboardMarkup(btn), protect_content=True)
             return
     else:
         pass
@@ -122,12 +122,12 @@ async def start(client, message):
         btn = await is_subscribed(client, message, settings['fsub'])
         if btn:
             btn.append(
-                [InlineKeyboardButton("🔁 Try Again 🔁", callback_data=f"checksub#{mc}")]
+                [InlineKeyboardButton("🔁 ᴛʀʏ ᴀɢᴀɪɴ 🔁", callback_data=f"checksub#{mc}")]
             )
             reply_markup = InlineKeyboardMarkup(btn)
             await message.reply_photo(
                 photo=random.choice(PICS),
-                caption=f"👋 Hello {message.from_user.mention},\n\nPlease join my 'Updates Channel' and try again. 😇",
+                caption=f"👋 Hello {message.from_user.mention},\n\nᴘʟᴇᴀsᴇ ᴊᴏɪɴ ᴍʏ ᴜᴘᴅᴀᴛᴇs ᴄʜᴀɴɴᴇʟ ᴀɴᴅ ᴛʀʏ ᴀɢᴀɪɴ. 😇",
                 reply_markup=reply_markup,
                 parse_mode=enums.ParseMode.HTML
             )
@@ -137,7 +137,7 @@ async def start(client, message):
         _, grp_id, key = mc.split("_", 2)
         files = temp.FILES.get(key)
         if not files:
-            return await message.reply('No Such All Files Exist!')
+            return await message.reply('ɴᴏ sᴜᴄʜ ᴀʟʟ ғɪʟᴇ ᴇxɪsᴛ !')
         settings = await get_settings(int(grp_id))
         for file in files:
             CAPTION = settings['caption']
@@ -151,14 +151,14 @@ async def start(client, message):
                     InlineKeyboardButton("✛ ᴡᴀᴛᴄʜ & ᴅᴏᴡɴʟᴏᴀᴅ ✛", callback_data=f"stream#{file.file_id}")
                 ],[
                     InlineKeyboardButton('⚡️ ᴜᴘᴅᴀᴛᴇs ⚡️', url=UPDATES_LINK),
-                    InlineKeyboardButton('💡 ꜱᴜᴘᴘᴏʀᴛ 💡', url=SUPPORT_LINK)
+                    InlineKeyboardButton('💡 ʀᴇᴏ̨ᴜᴇsᴛ 💡', url=SUPPORT_LINK)
                 ],[
                     InlineKeyboardButton('⁉️ ᴄʟᴏsᴇ ⁉️', callback_data='close_data')
                 ]]
             else:
                 btn = [[
                     InlineKeyboardButton('⚡️ ᴜᴘᴅᴀᴛᴇs ⚡️', url=UPDATES_LINK),
-                    InlineKeyboardButton('💡 ꜱᴜᴘᴘᴏʀᴛ 💡', url=SUPPORT_LINK)
+                    InlineKeyboardButton('💡 ʀᴇᴏ̨ᴜᴇsᴛ 💡', url=SUPPORT_LINK)
                 ],[
                     InlineKeyboardButton('⁉️ ᴄʟᴏsᴇ ⁉️', callback_data='close_data')
                 ]]
@@ -170,7 +170,7 @@ async def start(client, message):
                 reply_markup=InlineKeyboardMarkup(btn)
             )
             asyncio.create_task(delayed_delete(client, sent_message, 600))
-        await message.reply("<b>This file will be deleted after 10 min so please forward it in your saved messages.</b>")                                   
+        await message.reply("<b>ᴛʜɪs ғɪʟᴇ ᴡɪʟʟ ʙᴇ ᴅᴇʟᴇᴛᴇᴅ ᴀғᴛᴇʀ 10 ᴍɪɴ sᴏ ᴘʟᴇᴀsᴇ ғᴏʀᴡᴀʀᴅ ɪᴛ ɪɴ ʏᴏᴜʀ sᴀᴠᴇᴅ ᴍᴇssᴀɢᴇs.</b>")                                   
         return
 
     type_, grp_id, file_id = mc.split("_", 2)
@@ -183,11 +183,11 @@ async def start(client, message):
         if not await db.has_premium_access(message.from_user.id):
             link = await get_shortlink(settings['url'], settings['api'], f"https://t.me/{temp.U_NAME}?start=shortlink_{grp_id}_{file_id}")
             btn = [[
-                InlineKeyboardButton("♻️ Get File ♻️", url=link)
+                InlineKeyboardButton("♻️ ɢᴇᴛ ғɪʟᴇ ♻️", url=link)
             ],[
                 InlineKeyboardButton("📍 ʜᴏᴡ ᴛᴏ ᴏᴘᴇɴ ʟɪɴᴋ 📍", url=settings['tutorial'])
             ]]
-            await message.reply(f"[{get_size(files.file_size)}] {files.file_name}\n\nYour file is ready, Please get using this link. 👍", reply_markup=InlineKeyboardMarkup(btn), protect_content=True)
+            await message.reply(f"[{get_size(files.file_size)}] {files.file_name}\n\nʏᴏᴜʀ ғɪʟᴇ ɪs ʀᴇᴀᴅʏ, ᴘʟᴇᴀsᴇ ɢᴇᴛ ᴜsɪɴɢ ᴛʜɪs ʟɪɴᴋ. 👍", reply_markup=InlineKeyboardMarkup(btn), protect_content=True)
             return
     else:
         pass
@@ -203,14 +203,14 @@ async def start(client, message):
             InlineKeyboardButton("✛ ᴡᴀᴛᴄʜ & ᴅᴏᴡɴʟᴏᴀᴅ ✛", callback_data=f"stream#{file_id}")
         ],[
             InlineKeyboardButton('⚡️ ᴜᴘᴅᴀᴛᴇs ⚡️', url=UPDATES_LINK),
-            InlineKeyboardButton('💡 ꜱᴜᴘᴘᴏʀᴛ 💡', url=SUPPORT_LINK)
+            InlineKeyboardButton('💡 ʀᴇᴏ̨ᴜᴇsᴛ 💡', url=SUPPORT_LINK)
         ],[
             InlineKeyboardButton('⁉️ ᴄʟᴏsᴇ ⁉️', callback_data='close_data')
         ]]
     else:
         btn = [[
             InlineKeyboardButton('⚡️ ᴜᴘᴅᴀᴛᴇs ⚡️', url=UPDATES_LINK),
-            InlineKeyboardButton('💡 ꜱᴜᴘᴘᴏʀᴛ 💡', url=SUPPORT_LINK)
+            InlineKeyboardButton('💡 ʀᴇᴏ̨ᴜᴇsᴛ 💡', url=SUPPORT_LINK)
         ],[
             InlineKeyboardButton('⁉️ ᴄʟᴏsᴇ ⁉️', callback_data='close_data')
         ]]
@@ -221,7 +221,7 @@ async def start(client, message):
         protect_content=settings['file_secure'],
         reply_markup=InlineKeyboardMarkup(btn)
     )
-    await sent_message.reply("<b>This file will be deleted after 10 min so please forward it in your saved messages.</b>")
+    await sent_message.reply("<b>ᴛʜɪs ғɪʟᴇ ᴡɪʟʟ ʙᴇ ᴅᴇʟᴇᴛᴇᴅ ᴀғᴛᴇʀ 10 ᴍɪɴ sᴏ ᴘʟᴇᴀsᴇ ғᴏʀᴡᴀʀᴅ ɪᴛ ɪɴ ʏᴏᴜʀ sᴀᴠᴇᴅ ᴍᴇssᴀɢᴇs.</b>")
     asyncio.create_task(delayed_delete(client, sent_message, 600))
 
 @Client.on_message(filters.command('index_channels') & filters.user(ADMINS))
