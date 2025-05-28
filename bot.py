@@ -31,7 +31,7 @@ class Bot(Client):
             with open("restart.txt") as file:
                 chat_id, msg_id = map(int, file)
             try:
-                await self.edit_message_text(chat_id=chat_id, message_id=msg_id, text='Restarted Successfully !')
+                await self.edit_message_text(chat_id=chat_id, message_id=msg_id, text='ʀᴇsᴛᴀʀᴛᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ !')
             except:
                 pass
             os.remove('restart.txt')
