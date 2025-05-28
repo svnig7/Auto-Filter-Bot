@@ -281,7 +281,7 @@ async def settings(client, message):
             InlineKeyboardButton('ᴡᴇʟᴄᴏᴍᴇ', callback_data=f'setgs#welcome#{settings["welcome"]}#{grp_id}',),
             InlineKeyboardButton('✅ ʏᴇs' if settings["welcome"] else '❌ ɴᴏ', callback_data=f'setgs#welcome#{settings["welcome"]}#{grp_id}'),
         ],[
-            InlineKeyboardButton('sʜᴏʀᴛ ʟɪɴᴋ', callback_data=f'setgs#shortlink#{settings["shortlink"]}#{grp_id}'),
+            InlineKeyboardButton('sʜᴏʀᴛʟɪɴᴋ', callback_data=f'setgs#shortlink#{settings["shortlink"]}#{grp_id}'),
             InlineKeyboardButton('✅ ʏᴇs' if settings["shortlink"] else '❌ ɴᴏ', callback_data=f'setgs#shortlink#{settings["shortlink"]}#{grp_id}'),
         ],[
             InlineKeyboardButton('ʀᴇsᴜʟᴛ ᴘᴀɢᴇ', callback_data=f'setgs#links#{settings["links"]}#{str(grp_id)}'),
@@ -363,38 +363,38 @@ async def save_shortlink(client, message):
         return await message.reply_text("ʏᴏᴜʀ sʜᴏʀᴛʟɪɴᴋ ᴀᴘɪ ᴏʀ ᴜʀʟ ɪɴᴠᴀʟɪᴅ, ᴘʟᴇᴀsᴇ ᴄʜᴇᴄᴋ ᴀɢᴀɪɴ !")   
     await save_group_settings(grp_id, 'url', url)
     await save_group_settings(grp_id, 'api', api)
-    await message.reply_text(f"Successfully changed shortlink for {title} to\n\nURL - {url}\nAPI - {api}")
+    await message.reply_text(f"sᴜᴄᴄᴇssғᴜʟʟʏ ᴄʜᴀɴɢᴇᴅ sʜᴏʀᴛʟɪɴᴋ ғᴏʀ {title} to\n\nᴜʀʟ - {url}\nᴀᴘɪ - {api}")
     
 @Client.on_message(filters.command('get_custom_settings'))
 async def get_custom_settings(client, message):
     userid = message.from_user.id if message.from_user else None
     if not userid:
-        return await message.reply("<b>You are Anonymous admin you can't use this command !</b>")
+        return await message.reply("<b>ʏᴏᴜ ᴀʀᴇ ᴀɴᴏɴʏᴍᴏᴜs ᴀᴅᴍɪɴ ʏᴏᴜ ᴄᴀɴ'ᴛ ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ !</b>")
     chat_type = message.chat.type
     if chat_type not in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
-        return await message.reply_text("Use this command in group.")
+        return await message.reply_text("ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ɪɴ ɢʀᴏᴜᴘ.")
     grp_id = message.chat.id
     title = message.chat.title
     if not await is_check_admin(client, grp_id, message.from_user.id):
-        return await message.reply_text('You not admin in this group...')    
+        return await message.reply_text('ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀᴅᴍɪɴ ɪɴ ᴛʜɪs ɢʀᴏᴜᴘ...')    
     settings = await get_settings(grp_id)
-    text = f"""Custom settings for: {title}
+    text = f"""ᴄᴜsᴛᴏᴍ sᴇᴛᴛɪɴɢs ғᴏʀ : {title}
 
-Shortlink URL: {settings["url"]}
-Shortlink API: {settings["api"]}
+sʜᴏʀᴛʟɪɴᴋ ᴜʀʟ : {settings["url"]}
+sʜᴏʀᴛʟɪɴᴋ ᴀᴘɪ : {settings["api"]}
 
-IMDb Template: {settings['template']}
+ɪᴍᴅʙ ᴛᴇᴍᴘʟᴀᴛᴇ : {settings['template']}
 
-File Caption: {settings['caption']}
+ғɪʟᴇ ᴄᴀᴘᴛɪᴏɴ : {settings['caption']}
 
-Welcome Text: {settings['welcome_text']}
+ᴡᴇʟᴄᴏᴍᴇ ᴛᴇxᴛ : {settings['welcome_text']}
 
-Tutorial Link: {settings['tutorial']}
+ᴛᴜᴛᴏʀɪᴀʟ ʟɪɴᴋ : {settings['tutorial']}
 
-Force Channels: {str(settings['fsub'])[1:-1] if settings['fsub'] else 'Not Set'}"""
+ғᴏʀᴄᴇ ᴄʜᴀɴɴᴇʟs : {str(settings['fsub'])[1:-1] if settings['fsub'] else 'ɴᴏᴛ sᴇᴛ'}"""
 
     btn = [[
-        InlineKeyboardButton(text="Close", callback_data="close_data")
+        InlineKeyboardButton(text="ᴄʟᴏsᴇ", callback_data="close_data")
     ]]
     await message.reply_text(text, reply_markup=InlineKeyboardMarkup(btn), disable_web_page_preview=True)
 
@@ -402,113 +402,113 @@ Force Channels: {str(settings['fsub'])[1:-1] if settings['fsub'] else 'Not Set'}
 async def save_welcome(client, message):
     userid = message.from_user.id if message.from_user else None
     if not userid:
-        return await message.reply("<b>You are Anonymous admin you can't use this command !</b>")
+        return await message.reply("<b>ʏᴏᴜ ᴀʀᴇ ᴀɴᴏɴʏᴍᴏᴜs ᴀᴅᴍɪɴ ʏᴏᴜ ᴄᴀɴ'ᴛ ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ !</b>")
     chat_type = message.chat.type
     if chat_type not in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
-        return await message.reply_text("Use this command in group.")      
+        return await message.reply_text("ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ɪɴ ɢʀᴏᴜᴘ.")      
     grp_id = message.chat.id
     title = message.chat.title
     if not await is_check_admin(client, grp_id, message.from_user.id):
-        return await message.reply_text('You not admin in this group.')
+        return await message.reply_text('ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀᴅᴍɪɴ ɪɴ ᴛʜɪs ɢʀᴏᴜᴘ.')
     try:
         welcome = message.text.split(" ", 1)[1]
     except:
-        return await message.reply_text("Command Incomplete!")    
+        return await message.reply_text("ᴄᴏᴍᴍᴀɴᴅ ɪɴᴄᴏᴍᴘʟᴇᴛᴇ !")    
     await save_group_settings(grp_id, 'welcome_text', welcome)
-    await message.reply_text(f"Successfully changed welcome for {title} to\n\n{welcome}")
+    await message.reply_text(f"sᴜᴄᴄᴇssғᴜʟʟʏ ᴄʜᴀɴɢᴇᴅ ᴡᴇʟᴄᴏᴍᴇ ғᴏʀ {title} to\n\n{welcome}")
         
 @Client.on_message(filters.command('delete') & filters.user(ADMINS))
 async def delete_file(bot, message):
     try:
         query = message.text.split(" ", 1)[1]
     except:
-        return await message.reply_text("Command Incomplete!\nUsage: /delete query")
-    msg = await message.reply_text('Searching...')
+        return await message.reply_text("ᴄᴏᴍᴍᴀɴᴅ ɪɴᴄᴏᴍᴘʟᴇᴛᴇ !\nᴜsᴀɢᴇ : /delete ᴏ̨ᴜᴇʀʏ")
+    msg = await message.reply_text('sᴇᴀʀᴄʜɪɴɢ...')
     total, files = await delete_files(query)
     if int(total) == 0:
-        return await msg.edit('Not have files in your query')
+        return await msg.edit('ɴᴏᴛ ʜᴀᴠᴇ ғɪʟᴇs ɪɴ ʏᴏᴜʀ ᴏ̨ᴜᴇʀʏ')
     btn = [[
-        InlineKeyboardButton("YES", callback_data=f"delete_{query}")
+        InlineKeyboardButton("ʏᴇs", callback_data=f"delete_{query}")
     ],[
-        InlineKeyboardButton("CLOSE", callback_data="close_data")
+        InlineKeyboardButton("ᴄʟᴏsᴇ", callback_data="close_data")
     ]]
-    await msg.edit(f"Total {total} files found in your query {query}.\n\nDo you want to delete?", reply_markup=InlineKeyboardMarkup(btn))
+    await msg.edit(f"ᴛᴏᴛᴀʟ {total} ғɪʟᴇs ғᴏᴜɴᴅ ɪɴ ʏᴏᴜʀ ᴏ̨ᴜᴇʀʏ {query}.\n\nᴅᴏ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ᴅᴇʟᴇᴛᴇ ?", reply_markup=InlineKeyboardMarkup(btn))
  
 @Client.on_message(filters.command('delete_all') & filters.user(ADMINS))
 async def delete_all_index(bot, message):
     btn = [[
-        InlineKeyboardButton(text="YES", callback_data="delete_all")
+        InlineKeyboardButton(text="ʏᴇs", callback_data="delete_all")
     ],[
-        InlineKeyboardButton(text="CLOSE", callback_data="close_data")
+        InlineKeyboardButton(text="ᴄʟᴏsᴇ", callback_data="close_data")
     ]]
     files = await Media.count_documents()
     if int(files) == 0:
-        return await message.reply_text('Not have files to delete')
-    await message.reply_text(f'Total {files} files have.\nDo you want to delete all?', reply_markup=InlineKeyboardMarkup(btn))
+        return await message.reply_text('ɴᴏᴛ ʜᴀᴠᴇ ғɪʟᴇs ᴛᴏ ᴅᴇʟᴇᴛᴇ')
+    await message.reply_text(f'ᴛᴏᴛᴀʟ {files} ғɪʟᴇs ʜᴀᴠᴇ.\nᴅᴏ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ᴅᴇʟᴇᴛᴇ ᴀʟʟ ?', reply_markup=InlineKeyboardMarkup(btn))
 
 @Client.on_message(filters.command('set_tutorial'))
 async def set_tutorial(client, message):
     userid = message.from_user.id if message.from_user else None
     if not userid:
-        return await message.reply("<b>You are Anonymous admin you can't use this command !</b>")
+        return await message.reply("<b>ʏᴏᴜ ᴀʀᴇ ᴀɴᴏɴʏᴍᴏᴜs ᴀᴅᴍɪɴ ʏᴏᴜ ᴄᴀɴ'ᴛ ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ !</b>")
     chat_type = message.chat.type
     if chat_type not in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
-        return await message.reply_text("Use this command in group.")       
+        return await message.reply_text("ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ɪɴ ɢʀᴏᴜᴘ.")       
     grp_id = message.chat.id
     title = message.chat.title
     if not await is_check_admin(client, grp_id, message.from_user.id):
-        return await message.reply_text('You not admin in this group.')
+        return await message.reply_text('ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀᴅᴍɪɴ ɪɴ ᴛʜɪs ɢʀᴏᴜᴘ.')
     try:
         tutorial = message.text.split(" ", 1)[1]
     except:
-        return await message.reply_text("Command Incomplete!")   
+        return await message.reply_text("ᴄᴏᴍᴍᴀɴᴅ ɪɴᴄᴏᴍᴘʟᴇᴛᴇ !")   
     await save_group_settings(grp_id, 'tutorial', tutorial)
-    await message.reply_text(f"Successfully changed tutorial for {title} to\n\n{tutorial}")
+    await message.reply_text(f"sᴜᴄᴄᴇssғᴜʟʟʏ ᴄʜᴀɴɢᴇᴅ ᴛᴜᴛᴏʀɪᴀʟ ғᴏʀ {title} ᴛᴏ\n\n{tutorial}")
 
 @Client.on_message(filters.command('set_fsub'))
 async def set_fsub(client, message):
     userid = message.from_user.id if message.from_user else None
     if not userid:
-        return await message.reply("<b>You are Anonymous admin you can't use this command !</b>")
+        return await message.reply("<b>ʏᴏᴜ ᴀʀᴇ ᴀɴᴏɴʏᴍᴏᴜs ᴀᴅᴍɪɴ ʏᴏᴜ ᴄᴀɴ'ᴛ ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ !</b>")
     chat_type = message.chat.type
     if chat_type not in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
-        return await message.reply_text("Use this command in group.")      
+        return await message.reply_text("ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ɪɴ ɢʀᴏᴜᴘ.")      
     grp_id = message.chat.id
     title = message.chat.title
     if not await is_check_admin(client, grp_id, message.from_user.id):
-        return await message.reply_text('You not admin in this group.')
+        return await message.reply_text('ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀᴅᴍɪɴ ɪɴ ᴛʜɪs ɢʀᴏᴜᴘ.')
     vp = message.text.split(" ", 1)[1]
     if vp.lower() in ["Off", "off", "False", "false", "Turn Off", "turn off"]:
         await save_group_settings(grp_id, 'is_fsub', False)
-        return await message.reply_text("Successfully Turned Off !")
+        return await message.reply_text("sᴜᴄᴄᴇssғᴜʟʟʏ ᴛᴜʀɴᴇᴅ ᴏғғ !")
     elif vp.lower() in ["On", "on", "True", "true", "Turn On", "turn on"]:
         await save_group_settings(grp_id, 'is_fsub', True)
-        return await message.reply_text("Successfully Turned On !")
+        return await message.reply_text("sᴜᴄᴄᴇssғᴜʟʟʏ ᴛᴜʀɴᴇᴅ ᴏɴ !")
     try:
         ids = message.text.split(" ", 1)[1]
         fsub_ids = list(map(int, ids.split()))
     except IndexError:
-        return await message.reply_text("Command Incomplete!\n\nCan multiple channel add separate by spaces. Like: /set_fsub id1 id2 id3")
+        return await message.reply_text("ᴄᴏᴍᴍᴀɴᴅ ɪɴᴄᴏᴍᴘʟᴇᴛᴇ !\n\nᴄᴀɴ ᴍᴜʟᴛɪᴘʟᴇ ᴄʜᴀɴɴᴇʟ ᴀᴅᴅ, sᴇᴘᴀʀᴀᴛᴇ ʙʏ sᴘᴀᴄᴇs. ʟɪᴋᴇ : /set_fsub ɪᴅ1 ɪᴅ2 ɪᴅ3")
     except ValueError:
-        return await message.reply_text('Make sure ids is integer.')        
-    channels = "Channels:\n"
+        return await message.reply_text('ᴍᴀᴋᴇ sᴜʀᴇ ɪᴅ's ɪs ɪɴᴛᴇɢᴇʀ.')        
+    channels = "ᴄʜᴀɴɴᴇʟs :\n"
     for id in fsub_ids:
         try:
             chat = await client.get_chat(id)
         except Exception as e:
-            return await message.reply_text(f"{id} is invalid!\nMake sure this bot admin in that channel.\n\nError - {e}")
+            return await message.reply_text(f"{id} ɪs ɪɴᴠᴀʟɪᴅ !\nᴍᴀᴋᴇ sᴜʀᴇ ᴛʜɪs ʙᴏᴛ ᴀᴅᴍɪɴ ɪɴ ᴛʜᴀᴛ ᴄʜᴀɴɴᴇʟ.\n\nᴇʀʀᴏʀ - {e}")
         if chat.type != enums.ChatType.CHANNEL:
-            return await message.reply_text(f"{id} is not channel.")
+            return await message.reply_text(f"{id} ɪs ɴᴏᴛ ᴄʜᴀɴɴᴇʟ.")
         channels += f'{chat.title}\n'
     await save_group_settings(grp_id, 'fsub', fsub_ids)
-    await message.reply_text(f"Successfully set force channels for {title} to\n\n{channels}")
+    await message.reply_text(f"sᴜᴄᴄᴇssғᴜʟʟʏ sᴇᴛ ғᴏʀᴄᴇ ᴄʜᴀɴɴᴇʟs ғᴏʀ {title} ᴛᴏ\n\n{channels}")
 
 @Client.on_message(filters.command('ping'))
 async def ping(client, message):
     start_time = time.monotonic()
     msg = await message.reply("👀")
     end_time = time.monotonic()
-    await msg.edit(f'{round((end_time - start_time) * 1000)} ms')
+    await msg.edit(f'{round((end_time - start_time) * 1000)} ᴍs')
     
 @Client.on_message(filters.command("add_premium"))
 async def give_premium_cmd_handler(client, message):
