@@ -79,7 +79,7 @@ class Database:
         )
         await self.col.update_one({'id': id}, {'$set': {'ban_status': ban_status}})
     
-    async def ban_user(self, user_id, ban_reason="No Reason"):
+    async def ban_user(self, user_id, ban_reason="ɴᴏ ʀᴇᴀsᴏɴ"):
         ban_status = dict(
             is_banned=True,
             ban_reason=ban_reason
@@ -136,7 +136,7 @@ class Database:
             return chat.get('settings', self.default_setgs)
         return self.default_setgs
     
-    async def disable_chat(self, chat, reason="No Reason"):
+    async def disable_chat(self, chat, reason="ɴᴏ ʀᴇᴀsᴏɴ"):
         chat_status=dict(
             is_disabled=True,
             reason=reason,
