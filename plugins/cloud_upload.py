@@ -1,7 +1,7 @@
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from PIL import Image
-import requests, os
+import requests, os, mimetypes
 
 def convert_to_jpeg(image_path):
     new_path = image_path.rsplit('.', 1)[0] + ".jpg"
@@ -14,13 +14,17 @@ def convert_to_jpeg(image_path):
         return None
 
 def upload_to_telegra_ph(image_path):
+    mime_type, _ = mimetypes.guess_type(image_path)
     try:
         with open(image_path, 'rb') as f:
-            response = requests.post("https://telegra.ph/upload", files={"file": ("file", f, "image/jpeg")})
+            response = requests.post(
+                "https://telegra.ph/upload",
+                files={"file": (os.path.basename(image_path), f, mime_type or "image/jpeg")}
+            )
             if response.status_code == 200:
-                return "https://graph.org" + response.json()[0]["src"]
+                return "https://telegra.ph" + response.json()[0]["src"]
             else:
-                raise Exception(f"Upload failed with status code {response.status_code}")
+                raise Exception(f"Upload failed with status code {response.status_code}: {response.text}")
     except Exception as e:
         raise Exception(f"Upload failed: {e}")
 
@@ -38,8 +42,8 @@ async def upload_handler(client, message):
 
     temp_path = await replied.download()
     jpeg_path = convert_to_jpeg(temp_path)
-    if not jpeg_path:
-        await message.reply_text("❌ Failed to convert image to JPEG.")
+    if not jpeg_path or os.path.getsize(jpeg_path) == 0:
+        await message.reply_text("❌ Failed to convert image to a valid JPEG.")
         return
 
     uploading_msg = await message.reply_text("📤 Uploading to Telegra.ph...")
@@ -67,4 +71,4 @@ async def upload_handler(client, message):
         ], [
             InlineKeyboardButton("🗑️ Delete", callback_data="close_data")
         ]])
-    )
+            )
