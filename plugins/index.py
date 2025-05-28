@@ -5,7 +5,6 @@ import logging
 import asyncio
 from pyrogram import Client, filters, enums
 from pyrogram.errors import FloodWait
-
 from pyrogram.errors.exceptions.bad_request_400 import ChannelInvalid, ChatAdminRequired, UsernameInvalid, UsernameNotModified, UserIsBlocked
 from info import ADMINS, LOG_CHANNEL, INDEX_EXTENSIONS
 from database.ia_filterdb import save_file
@@ -20,7 +19,7 @@ async def index_files(bot, query):
     _, ident, chat, lst_msg_id, skip = query.data.split("#")
     if ident == 'yes':
         msg = query.message
-        await msg.edit("Starting Indexing...")
+        await msg.edit("sᴛᴀʀᴛɪɴɢ ɪɴᴅᴇxɪɴɢ...")
         try:
             chat = int(chat)
         except:
@@ -28,7 +27,7 @@ async def index_files(bot, query):
         await index_files_to_db(int(lst_msg_id), chat, msg, bot, int(skip))
     elif ident == 'cancel':
         temp.CANCEL = True
-        await query.message.edit("Trying to cancel Indexing...")
+        await query.message.edit("ᴛʀʏɪɴɢ ᴛᴏ ᴄᴀɴᴄᴇʟ ɪɴᴅᴇxɪɴɢ...")
 
 @Client.on_message((filters.forwarded | (filters.regex("(https://)?(t\.me/|telegram\.me/|telegram\.dog/)(c/)?(\d+|[a-zA-Z_0-9]+)/(\d+)$")) & filters.text ) & filters.private & filters.incoming)
 async def send_for_index(bot, message):
@@ -36,7 +35,7 @@ async def send_for_index(bot, message):
         regex = re.compile("(https://)?(t\.me/|telegram\.me/|telegram\.dog/)(c/)?(\d+|[a-zA-Z_0-9]+)/(\d+)$")
         match = regex.match(message.text)
         if not match:
-            return await message.reply('Invalid link')
+            return await message.reply('ɪɴᴠᴀʟɪᴅ ʟɪɴᴋ')
         chat_id = match.group(4)
         last_msg_id = int(match.group(5))
         if chat_id.isnumeric():
@@ -49,21 +48,21 @@ async def send_for_index(bot, message):
     try:
         await bot.get_chat(chat_id)
     except ChannelInvalid:
-        return await message.reply('This may be a private channel / group. Make me an admin over there to index the files.')
+        return await message.reply('ᴛʜɪs ᴍᴀʏ ʙᴇ ᴀ ᴘʀɪᴠᴀᴛᴇ ᴄʜᴀɴɴᴇʟ / ɢʀᴏᴜᴘ. ᴍᴀᴋᴇ ᴍᴇ ᴀɴ ᴀᴅᴍɪɴ ᴏᴠᴇʀ ᴛʜᴇʀᴇ ᴛᴏ ɪɴᴅᴇx ᴛʜᴇ ғɪʟᴇs.')
     except (UsernameInvalid, UsernameNotModified):
-        return await message.reply('Invalid Link specified.')
+        return await message.reply('ɪɴᴠᴀʟɪᴅ ʟɪɴᴋ sᴘᴇᴄɪғɪᴇᴅ.')
     except Exception as e:
         logger.exception(e)
-        return await message.reply(f'Errors - {e}')
+        return await message.reply(f'ᴇʀʀᴏʀs - {e}')
     try:
         k = await bot.get_messages(chat_id, last_msg_id)
     except:
-        return await message.reply('Make Sure That Iam An Admin In The Channel, if channel is private')
+        return await message.reply('ᴍᴀᴋᴇ sᴜʀᴇ ᴛʜᴀᴛ ɪ ᴀᴍ ᴀɴ ᴀᴅᴍɪɴ ɪɴ ᴛʜᴇ ᴄʜᴀɴɴᴇʟ, ɪғ ᴄʜᴀɴɴᴇʟ ɪs ᴘʀɪᴠᴀᴛᴇ')
     if k.empty:
-        return await message.reply('This may be group and iam not a admin of the group.')
+        return await message.reply('ᴛʜɪs ᴍᴀʏ ʙᴇ ɢʀᴏᴜᴘ ᴀɴᴅ ɪ ᴀᴍ ɴᴏᴛ ᴀ ᴀᴅᴍɪɴ ᴏғ ᴛʜᴇ ɢʀᴏᴜᴘ.')
 
     s = await message.reply_text(
-        text = "<b>Send the skip message number.\n\nIf dont want to skip any files send me 👉 0 \n</b>",
+        text = "<b>sᴇɴᴅ ᴛʜᴇ sᴋɪᴘ ᴍᴇssᴀɢᴇ ɴᴜᴍʙᴇʀ.\n\nɪғ ᴅᴏɴ'ᴛ ᴡᴀɴᴛ ᴛᴏ sᴋɪᴘ ᴀɴʏ ғɪʟᴇs sᴇɴᴅ ᴍᴇ 👉 0 \n</b>",
         reply_to_message_id=message.id,
         reply_markup=ForceReply(True)
     )
@@ -77,7 +76,7 @@ async def forceskip(client, message):
         try:
             skip = int(skip_msg.text)
         except:
-            await message.reply("InValid Number provided using 0 as a skip number")
+            await message.reply("ɪɴᴠᴀʟɪᴅ ɴᴜᴍʙᴇʀ ᴘʀᴏᴠɪᴅᴇᴅ ᴜsɪɴɢ 0 ᴀs ᴀ sᴋɪᴘ ɴᴜᴍʙᴇʀ")
             skip = 0
         msg = await client.get_messages(message.chat.id, reply_message.id) 
         info = msg.reply_to_message
@@ -85,7 +84,7 @@ async def forceskip(client, message):
             regex = re.compile("(https://)?(t\.me/|telegram\.me/|telegram\.dog/)(c/)?(\d+|[a-zA-Z_0-9]+)/(\d+)$")
             match = regex.match(info.text)
             if not match:
-                return await info.reply('Invalid link')
+                return await info.reply('ɪɴᴠᴀʟɪᴅ ʟɪɴᴋ')
             chat_id = match.group(4)
             last_msg_id = int(match.group(5))
             if chat_id.isnumeric():
@@ -101,21 +100,17 @@ async def forceskip(client, message):
     if message.from_user.id in ADMINS:      
         buttons = [
             [
-                InlineKeyboardButton('Yes',
+                InlineKeyboardButton('ʏᴇs',
                                      callback_data=f'index#yes#{chat_id}#{last_msg_id}#{skip}')
             ],
             [
-                InlineKeyboardButton('close', callback_data='close_data'),
+                InlineKeyboardButton('ᴄʟᴏsᴇ', callback_data='close_data'),
             ]
         ]
         reply_markup = InlineKeyboardMarkup(buttons)
         return await message.reply(
-            f'Do you Want To Index This Channel/ Group ?\n\nChat ID/ Username: <code>{chat_id}</code>\nLast Message ID: <code>{last_msg_id}</code>',
+            f'ᴅᴏ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ɪɴᴅᴇx ᴛʜɪs ᴄʜᴀɴɴᴇʟ / ɢʀᴏᴜᴘ ?\n\nᴄʜᴀᴛ ɪᴅ / ᴜsᴇʀɴᴀᴍᴇ : <code>{chat_id}</code>\nʟᴀsᴛ ᴍᴇssᴀɢᴇ ɪᴅ : <code>{last_msg_id}</code>',
             reply_markup=reply_markup)
- 
-    
-    
-
 
 async def index_files_to_db(lst_msg_id, chat, msg, bot, skip):
     start_time = time.time()
@@ -133,14 +128,14 @@ async def index_files_to_db(lst_msg_id, chat, msg, bot, skip):
                 time_taken = get_readable_time(time.time()-start_time)
                 if temp.CANCEL:
                     temp.CANCEL = False
-                    await msg.edit(f"Successfully Cancelled!\nCompleted in {time_taken}\n\nSaved <code>{total_files}</code> files to Database!\nDuplicate Files Skipped: <code>{duplicate}</code>\nDeleted Messages Skipped: <code>{deleted}</code>\nNon-Media messages skipped: <code>{no_media + unsupported}</code>\nUnsupported Media: <code>{unsupported}</code>\nErrors Occurred: <code>{errors}</code>")
+                    await msg.edit(f"sᴜᴄᴄᴇssғᴜʟʟʏ ᴄᴀɴᴄᴇʟʟᴇᴅ !\nᴄᴏᴍᴘʟᴇᴛᴇᴅ ɪɴ {time_taken}\n\nsᴀᴠᴇᴅ <code>{total_files}</code> ғɪʟᴇs ᴛᴏ ᴅᴀᴛᴀʙᴀsᴇ !\nᴅᴜᴘʟɪᴄᴀᴛᴇ ғɪʟᴇs sᴋɪᴘᴘᴇᴅ : <code>{duplicate}</code>\nᴅᴇʟᴇᴛᴇᴅ ᴍᴇssᴀɢᴇs sᴋɪᴘᴘᴇᴅ : <code>{deleted}</code>\nɴᴏɴ-ᴍᴇᴅɪᴀ ᴍᴇssᴀɢᴇs sᴋɪᴘᴘᴇᴅ : <code>{no_media + unsupported}</code>\nᴜɴsᴜᴘᴘᴏʀᴛᴇᴅ ᴍᴇᴅɪᴀ : <code>{unsupported}</code>\nᴇʀʀᴏʀs ᴏᴄᴄᴜʀʀᴇᴅ : <code>{errors}</code>")
                     return
                 current += 1
                 if current % 60 == 0:
                     btn = [[
-                        InlineKeyboardButton('CANCEL', callback_data=f'index#cancel#{chat}#{lst_msg_id}#{skip}')
+                        InlineKeyboardButton('ᴄᴀɴᴄᴇʟ', callback_data=f'index#cancel#{chat}#{lst_msg_id}#{skip}')
                     ]]
-                    await msg.edit_text(text=f"Total messages received: <code>{current}</code>\nTotal messages saved: <code>{total_files}</code>\nDuplicate Files Skipped: <code>{duplicate}</code>\nDeleted Messages Skipped: <code>{deleted}</code>\nNon-Media messages skipped: <code>{no_media + unsupported}</code>\nUnsupported Media: <code>{unsupported}</code>\nErrors Occurred: <code>{errors}</code>", reply_markup=InlineKeyboardMarkup(btn))
+                    await msg.edit_text(text=f"ᴛᴏᴛᴀʟ ᴍᴇssᴀɢᴇs ʀᴇᴄᴇɪᴠᴇᴅ : <code>{current}</code>\nᴛᴏᴛᴀʟ ᴍᴇssᴀɢᴇs sᴀᴠᴇᴅ : <code>{total_files}</code>\nᴅᴜᴘʟɪᴄᴀᴛᴇ ғɪʟᴇs sᴋɪᴘᴘᴇᴅ : <code>{duplicate}</code>\nᴅᴇʟᴇᴛᴇᴅ ᴍᴇssᴀɢᴇs sᴋɪᴘᴘᴇᴅ : <code>{deleted}</code>\nɴᴏɴ-ᴍᴇᴅɪᴀ ᴍᴇssᴀɢᴇs sᴋɪᴘᴘᴇᴅ : <code>{no_media + unsupported}</code>\nᴜɴsᴜᴘᴘᴏʀᴛᴇᴅ ᴍᴇᴅɪᴀ : <code>{unsupported}</code>\nᴇʀʀᴏʀs ᴏᴄᴄᴜʀʀᴇᴅ : <code>{errors}</code>", reply_markup=InlineKeyboardMarkup(btn))
                 if message.empty:
                     deleted += 1
                     continue
@@ -166,6 +161,6 @@ async def index_files_to_db(lst_msg_id, chat, msg, bot, skip):
                 elif sts == 'err':
                     errors += 1
         except Exception as e:
-            await msg.reply(f'Index canceled due to Error - {e}')
+            await msg.reply(f'ɪɴᴅᴇx ᴄᴀɴᴄᴇʟᴇᴅ ᴅᴜᴇ ᴛᴏ ᴇʀʀᴏʀ - {e}')
         else:
-            await msg.edit(f'Succesfully saved <code>{total_files}</code> to Database!\nCompleted in {time_taken}\n\nDuplicate Files Skipped: <code>{duplicate}</code>\nDeleted Messages Skipped: <code>{deleted}</code>\nNon-Media messages skipped: <code>{no_media + unsupported}</code>\nUnsupported Media: <code>{unsupported}</code>\nErrors Occurred: <code>{errors}</code>')
+            await msg.edit(f'sᴜᴄᴄᴇsғᴜʟʟʏ sᴀᴠᴇᴅ <code>{total_files}</code> ᴛᴏ ᴅᴀᴛᴀʙᴀsᴇ !\nᴄᴏᴍᴘʟᴇᴛᴇᴅ ɪɴ {time_taken}\n\nᴅᴜᴘʟɪᴄᴀᴛᴇ ғɪʟᴇs sᴋɪᴘᴘᴇᴅ : <code>{duplicate}</code>\nᴅᴇʟᴇᴛᴇᴅ ᴍᴇssᴀɢᴇs sᴋɪᴘᴘᴇᴅ : <code>{deleted}</code>\nɴᴏɴ-ᴍᴇᴅɪᴀ ᴍᴇssᴀɢᴇs sᴋɪᴘᴘᴇᴅ : <code>{no_media + unsupported}</code>\nᴜɴsᴜᴘᴘᴏʀᴛᴇᴅ ᴍᴇᴅɪᴀ : <code>{unsupported}</code>\nᴇʀʀᴏʀs ᴏᴄᴄᴜʀʀᴇᴅ : <code>{errors}</code>')
