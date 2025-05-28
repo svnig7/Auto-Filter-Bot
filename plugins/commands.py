@@ -363,7 +363,7 @@ async def save_shortlink(client, message):
         return await message.reply_text("ʏᴏᴜʀ sʜᴏʀᴛʟɪɴᴋ ᴀᴘɪ ᴏʀ ᴜʀʟ ɪɴᴠᴀʟɪᴅ, ᴘʟᴇᴀsᴇ ᴄʜᴇᴄᴋ ᴀɢᴀɪɴ !")   
     await save_group_settings(grp_id, 'url', url)
     await save_group_settings(grp_id, 'api', api)
-    await message.reply_text(f"sᴜᴄᴄᴇssғᴜʟʟʏ ᴄʜᴀɴɢᴇᴅ sʜᴏʀᴛʟɪɴᴋ ғᴏʀ {title} to\n\nᴜʀʟ - {url}\nᴀᴘɪ - {api}")
+    await message.reply_text(f"sᴜᴄᴄᴇssғᴜʟʟʏ ᴄʜᴀɴɢᴇᴅ sʜᴏʀᴛʟɪɴᴋ ғᴏʀ {title} ᴛᴏ\n\nᴜʀʟ - {url}\nᴀᴘɪ - {api}")
     
 @Client.on_message(filters.command('get_custom_settings'))
 async def get_custom_settings(client, message):
@@ -415,7 +415,7 @@ async def save_welcome(client, message):
     except:
         return await message.reply_text("ᴄᴏᴍᴍᴀɴᴅ ɪɴᴄᴏᴍᴘʟᴇᴛᴇ !")    
     await save_group_settings(grp_id, 'welcome_text', welcome)
-    await message.reply_text(f"sᴜᴄᴄᴇssғᴜʟʟʏ ᴄʜᴀɴɢᴇᴅ ᴡᴇʟᴄᴏᴍᴇ ғᴏʀ {title} to\n\n{welcome}")
+    await message.reply_text(f"sᴜᴄᴄᴇssғᴜʟʟʏ ᴄʜᴀɴɢᴇᴅ ᴡᴇʟᴄᴏᴍᴇ ғᴏʀ {title} ᴛᴏ\n\n{welcome}")
         
 @Client.on_message(filters.command('delete') & filters.user(ADMINS))
 async def delete_file(bot, message):
