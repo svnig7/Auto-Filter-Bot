@@ -8,7 +8,7 @@ class script(object):
     MY_ABOUT_TXT = """★ sᴇʀᴠᴇʀ : <a href=https://www.heroku.com>ʜᴇʀᴏᴋᴜ</a>
 ★ ᴅᴀᴛᴀʙᴀsᴇ : <a href=https://www.mongodb.com>ᴍᴏɴɢᴏ ᴅʙ</a>
 ★ ʟᴀɴɢᴜᴀɢᴇ : <a href=https://www.python.org>ᴘʏᴛʜᴏɴ</a>
-★ ʟɪʙʀᴀʀʏ : <a href=https://pyrogram.org>ᴘʀᴏɢʀᴀᴍ</a>"""
+★ ʟɪʙʀᴀʀʏ : <a href=https://pyrogram.org>ᴘʏʀᴏɢʀᴀᴍ</a>"""
 
     MY_OWNER_TXT = """★ ɴᴀᴍᴇ : sᴠɴ
 ★ ᴜsᴇʀɴᴀᴍᴇ : @cntct_7bot
@@ -23,17 +23,17 @@ class script(object):
 ┣⪼𖨠 🚀 ʙᴏᴛ ᴜᴩᴛɪᴍᴇ : <code>{}</code> 
 ╰━━━━━━━━━━━━━━━━══❍⊱❁۪۪</b>"""
 
-    NEW_GROUP_TXT = """#NewGroup
+    NEW_GROUP_TXT = """#ɴᴇᴡɢʀᴏᴜᴘ
 ᴛɪᴛʟᴇ - {}
 ɪᴅ - <code>{}</code>
 ᴜsᴇʀɴᴀᴍᴇ - {}
 ᴛᴏᴛᴀʟ - <code>{}</code>"""
 
-    NEW_USER_TXT = """#NewUser
+    NEW_USER_TXT = """#ɴᴇᴡᴜsᴇʀ
 ★ ɴᴀᴍᴇ : {}
 ★ ɪᴅ : <code>{}</code>"""
 
-    NO_RESULT_TXT = """#NoResult
+    NO_RESULT_TXT = """#ɴᴏʀᴇsᴜʟᴛ
 ★ ɢʀᴏᴜᴘ ɴᴀᴍᴇ : {}
 ★ ɢʀᴏᴜᴘ ɪᴅ : <code>{}</code>
 ★ ɴᴀᴍᴇ : {}
@@ -105,63 +105,59 @@ class script(object):
     
     ADMIN_COMMAND_TXT = """<b>ʜᴇʀᴇ ɪs ʙᴏᴛ ᴀᴅᴍɪɴ ᴄᴏᴍᴍᴀɴᴅs 👇
 
-/index_channels - to check how many index channel id added
-/stats - to get bot status
-/delete - to delete files using query
-/delete_all - to delete all indexed file
-/broadcast - to send message to all bot users
-/grp_broadcast - to send message to all groups
-/pin_broadcast - to send message as pin to all bot users.
-/pin_grp_broadcast - to send message as pin to all groups.
-/restart - to restart bot
-/speedtest - check ul/dl
-/leave - to leave your bot from particular group
-/unban_grp - to enable group
-/ban_grp - to disable group
-/ban_user - to ban a users from bot
-/unban_user - to unban a users from bot
-/users - to get all users details
-/chats - to get all groups
-/invite_link - to generate invite link
-/index - to index bot accessible channels
-/add_premium - to add user in premium
-/remove_premium - to remove user from premium</b>"""
+/index_channels - ᴛᴏ ᴄʜᴇᴄᴋ ʜᴏᴡ ᴍᴀɴʏ ɪɴᴅᴇx ᴄʜᴀɴɴᴇʟ ɪᴅ ᴀᴅᴅᴇᴅ
+/stats - ᴛᴏ ɢᴇᴛ ʙᴏᴛ sᴛᴀᴛᴜs
+/delete - ᴛᴏ ᴅᴇʟᴇᴛᴇ ғɪʟᴇs ᴜsɪɴɢ ᴏ̨ᴜᴇʀʏ
+/delete_all - ᴛᴏ ᴅᴇʟᴇᴛᴇ ᴀʟʟ ɪɴᴅᴇxᴇᴅ ғɪʟᴇ
+/broadcast - ᴛᴏ sᴇɴᴅ ᴍᴇssᴀɢᴇ ᴛᴏ ᴀʟʟ ʙᴏᴛ ᴜsᴇʀs
+/grp_broadcast - ᴛᴏ sᴇɴᴅ ᴍᴇssᴀɢᴇ ᴛᴏ ᴀʟʟ ɢʀᴏᴜᴘs
+/pin_broadcast - ᴛᴏ sᴇɴᴅ ᴍᴇssᴀɢᴇ ᴀs ᴘɪɴ ᴛᴏ ᴀʟʟ ʙᴏᴛ ᴜsᴇʀs
+/pin_grp_broadcast - ᴛᴏ sᴇɴᴅ ᴍᴇssᴀɢᴇ ᴀs ᴘɪɴ ᴛᴏ ᴀʟʟ ɢʀᴏᴜᴘs
+/restart - ᴛᴏ ʀᴇsᴛᴀʀᴛ ʙᴏᴛ
+/speedtest - ᴄʜᴇᴄᴋ ᴜʟ / ᴅʟ
+/leave - ᴛᴏ ʟᴇᴀᴠᴇ ʏᴏᴜʀ ʙᴏᴛ ғʀᴏᴍ ᴘᴀʀᴛɪᴄᴜʟᴀʀ ɢʀᴏᴜᴘ
+/unban_grp - ᴛᴏ ᴇɴᴀʙʟᴇ ɢʀᴏᴜᴘ
+/ban_grp - ᴛᴏ ᴅɪsᴀʙʟᴇ ɢʀᴏᴜᴘ
+/ban_user - ᴛᴏ ʙᴀɴ ᴜsᴇʀs ғʀᴏᴍ ʙᴏᴛ
+/unban_user - ᴛᴏ ᴜɴʙᴀɴ ᴜsᴇʀs ғʀᴏᴍ ʙᴏᴛ
+/users - ᴛᴏ ɢᴇᴛ ᴀʟʟ ᴜsᴇʀs ᴅᴇᴛᴀɪʟs
+/chats - ᴛᴏ ɢᴇᴛ ᴀʟʟ ɢʀᴏᴜᴘs
+/invite_link - ᴛᴏ ɢᴇɴᴇʀᴀᴛᴇ ɪɴᴠɪᴛᴇ ʟɪɴᴋ
+/index - ᴛᴏ ɪɴᴅᴇx ʙᴏᴛ ᴀᴄᴄᴇssɪʙʟᴇ ᴄʜᴀɴɴᴇʟs
+/add_premium - ᴛᴏ ᴀᴅᴅ ᴜsᴇʀ ɪɴ ᴘʀᴇᴍɪᴜᴍ
+/remove_premium - ᴛᴏ ʀᴇᴍᴏᴠᴇ ᴜsᴇʀ ғʀᴏᴍ ᴘʀᴇᴍɪᴜᴍ</b>"""
 
-    GROUP_COMMAND_TXT = """<b>ʜᴇʀᴇ ɪs sᴏᴍᴇ (ɢʀᴏᴜᴘ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ) ɢʀᴏᴜᴘ ᴀᴅᴍɪɴ ᴄᴏᴍᴍᴀɴᴅs
-/manage - To perform bulk group actions
-/ban - To ban a member from group
-/unban - To unban a member from group
-/mute - To mute a member from group
-/unmute - To unmute a member from group
-/settings - to change group settings as your wish
-/set_template - to set custom imdb template
-/set_caption - to set custom bot files caption
-/set_shortlink - group admin can set custom shortlink
-/get_custom_settings - to get your group settings details
-/set_welcome - to set custom new joined users welcome message for group
-/set_tutorial - to set custom tutorial link in result page button
-/id - to check group or channel id
+    GROUP_COMMAND_TXT = """<b>ʜᴇʀᴇ ɪs sᴏᴍᴇ ( ɢʀᴏᴜᴘ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ) ɢʀᴏᴜᴘ ᴀᴅᴍɪɴ ᴄᴏᴍᴍᴀɴᴅs
+/manage - ᴛᴏ ᴘᴇʀғᴏʀᴍ ʙᴜʟᴋ ɢʀᴏᴜᴘ ᴀᴄᴛɪᴏɴs
+/ban - ᴛᴏ ʙᴀɴ ᴀ ᴍᴇᴍʙᴇʀ ғʀᴏᴍ ɢʀᴏᴜᴘ
+/unban - ᴛᴏ ᴜɴʙᴀɴ ᴀ ᴍᴇᴍʙᴇʀ ғʀᴏᴍ ɢʀᴏᴜᴘ
+/mute - ᴛᴏ ᴍᴜᴛᴇ ᴀ ᴍᴇᴍʙᴇʀ ғʀᴏᴍ ɢʀᴏᴜᴘ
+/unmute - ᴛᴏ ᴜɴᴍᴜᴛᴇ ᴀ ᴍᴇᴍʙᴇʀ ғʀᴏᴍ ɢʀᴏᴜᴘ
+/settings - ᴛᴏ ᴄʜᴀɴɢᴇ ɢʀᴏᴜᴘ sᴇᴛᴛɪɴɢs ᴀs ʏᴏᴜʀ ᴡɪsʜ
+/set_template - ᴛᴏ sᴇᴛ ᴄᴜsᴛᴏᴍ ɪᴍᴅʙ ᴛᴇᴍᴘʟᴀᴛᴇ
+/set_caption - ᴛᴏ sᴇᴛ ᴄᴜsᴛᴏᴍ ʙᴏᴛ ғɪʟᴇs ᴄᴀᴘᴛɪᴏɴ
+/set_shortlink - ɢʀᴏᴜᴘ ᴀᴅᴍɪɴ ᴄᴀɴ sᴇᴛ ᴄᴜsᴛᴏᴍ sʜᴏʀᴛʟɪɴᴋ
+/get_custom_settings - ᴛᴏ ɢᴇᴛ ʏᴏᴜʀ ɢʀᴏᴜᴘ sᴇᴛᴛɪɴɢs ᴅᴇᴛᴀɪʟs
+/set_welcome - ᴛᴏ sᴇᴛ ᴄᴜsᴛᴏᴍ ɴᴇᴡ ᴊᴏɪɴᴇᴅ ᴜsᴇʀs ᴡᴇʟᴄᴏᴍᴇ ᴍᴇssᴀɢᴇ ғᴏʀ ɢʀᴏᴜᴘ
+/set_tutorial - ᴛᴏ sᴇᴛ ᴄᴜsᴛᴏᴍ ᴛᴜᴛᴏʀɪᴀʟ ʟɪɴᴋ ɪɴ ʀᴇsᴜʟᴛ ᴘᴀɢᴇ ʙᴜᴛᴛᴏɴ
+/id - ᴛᴏ ᴄʜᴇᴄᴋ ɢʀᴏᴜᴘ ᴏʀ ᴄʜᴀɴɴᴇʟ ɪᴅ
 
     ᴍᴀᴋᴇ sᴜʀᴇ ᴛʜᴀᴛ ʙᴏᴛ ʜᴀs ᴀʟʟ ᴘᴇʀᴍɪssɪᴏɴ ɪɴ ᴛʜᴇ ɢʀᴏᴜᴘ ᴀs ᴀᴅᴍɪɴɪsᴛʀᴀᴛᴏʀ.</b>"""
     
     USER_COMMAND_TXT = """<b>ʜᴇʀᴇ ɪs ʙᴏᴛ ᴜsᴇʀ ᴄᴏᴍᴍᴀɴᴅs 👇
 
-/start - to check bot alive or not
-/settings - to change group settings as your wish
-/set_template - to set custom imdb template
-/set_caption - to set custom bot files caption
-/set_shortlink - group admin can set custom shortlink
-/get_custom_settings - to get your group settings details
-/set_welcome - to set custom new joined users welcome message for group
-/set_tutorial - to set custom tutorial link in result page button
-/id - to check group or channel id
-/my_plan - to check your plan details
-/plans - to get plan details</b>"""
+/start - ᴛᴏ ᴄʜᴇᴄᴋ ʙᴏᴛ ᴀʟɪᴠᴇ ᴏʀ ɴᴏᴛ
+/settings - ᴛᴏ ᴄʜᴀɴɢᴇ ɢʀᴏᴜᴘ sᴇᴛᴛɪɴɢs ᴀs ʏᴏᴜʀ ᴡɪsʜ
+/set_template - ᴛᴏ sᴇᴛ ᴄᴜsᴛᴏᴍ ɪᴍᴅʙ ᴛᴇᴍᴘʟᴀᴛᴇ
+/set_caption - ᴛᴏ sᴇᴛ ᴄᴜsᴛᴏᴍ ʙᴏᴛ ғɪʟᴇs ᴄᴀᴘᴛɪᴏɴ
+/set_shortlink - ɢʀᴏᴜᴘ ᴀᴅᴍɪɴ ᴄᴀɴ sᴇᴛ ᴄᴜsᴛᴏᴍ sʜᴏʀᴛʟɪɴᴋ
+/get_custom_settings - ᴛᴏ ɢᴇᴛ ʏᴏᴜʀ ɢʀᴏᴜᴘ sᴇᴛᴛɪɴɢs ᴅᴇᴛᴀɪʟs
+/set_welcome - ᴛᴏ sᴇᴛ ᴄᴜsᴛᴏᴍ ɴᴇᴡ ᴊᴏɪɴᴇᴅ ᴜsᴇʀs ᴡᴇʟᴄᴏᴍᴇ ᴍᴇssᴀɢᴇ ғᴏʀ ɢʀᴏᴜᴘ
+/set_tutorial - ᴛᴏ sᴇᴛ ᴄᴜsᴛᴏᴍ ᴛᴜᴛᴏʀɪᴀʟ ʟɪɴᴋ ɪɴ ʀᴇsᴜʟᴛ ᴘᴀɢᴇ ʙᴜᴛᴛᴏɴ
+/id - ᴛᴏ ᴄʜᴇᴄᴋ ɢʀᴏᴜᴘ ᴏʀ ᴄʜᴀɴɴᴇʟ ɪᴅ
+/my_plan - ᴛᴏ ᴄʜᴇᴄᴋ ʏᴏᴜʀ ᴘʟᴀɴ ᴅᴇᴛᴀɪʟs
+/plans - ᴛᴏ ɢᴇᴛ ᴘʟᴀɴ ᴅᴇᴛᴀɪʟs</b>"""
 
-    SOURCE_TXT = """<b>ʙᴏᴛ ɢɪᴛʜᴜʙ ʀᴇᴘᴏsɪᴛᴏʀʏ -
+    SOURCE_TXT = """<b>- ꜱᴏᴜʀᴄᴇ - <a href=https://t.me/cntct_7bot>ʜᴇʀᴇ</a>
 
-- ᴛʜɪꜱ ʙᴏᴛ ɪꜱ ᴀɴ ᴏᴘᴇɴ ꜱᴏᴜʀᴄᴇ ᴘʀᴏᴊᴇᴄᴛ.
-
-- ꜱᴏᴜʀᴄᴇ - <a href=https://github.com/GRVGK7/Auto-Filter-Bot>ʜᴇʀᴇ</a>
-
-- ᴅᴇᴠʟᴏᴘᴇʀ - @svntg7"""
+- ᴅᴇᴠʟᴏᴘᴇʀ - @cntct_7bot"""
