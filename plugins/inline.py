@@ -14,12 +14,12 @@ def is_banned(query: InlineQuery):
 
 @Client.on_inline_query()
 async def inline_search(bot, query):
-    """Show search results for given inline query"""
+    """sʜᴏᴡ sᴇᴀʀᴄʜ ʀᴇsᴜʟᴛs ғᴏʀ ɢɪᴠᴇɴ ɪɴʟɪɴᴇ ᴏ̨ᴜᴇʀʏ"""
 
     if is_banned(query):
         await query.answer(results=[],
                            cache_time=0,
-                           switch_pm_text="You're banned user :(",
+                           switch_pm_text="ʏᴏᴜ'ʀᴇ ʙᴀɴɴᴇᴅ ᴜsᴇʀ :(",
                            switch_pm_parameter="start")
         return
 
@@ -45,9 +45,9 @@ async def inline_search(bot, query):
                 reply_markup=reply_markup))
 
     if results:
-        switch_pm_text = f"{emoji.FILE_FOLDER} Results - {total}"
+        switch_pm_text = f"{emoji.FILE_FOLDER} ʀᴇsᴜʟᴛs - {total}"
         if string:
-            switch_pm_text += f' For: {string}'
+            switch_pm_text += f' ғᴏʀ : {string}'
         await query.answer(results=results,
                         is_personal = True,
                         cache_time=cache_time,
@@ -55,9 +55,9 @@ async def inline_search(bot, query):
                         switch_pm_parameter="start",
                         next_offset=str(next_offset))
     else:
-        switch_pm_text = f'{emoji.CROSS_MARK} No Results'
+        switch_pm_text = f'{emoji.CROSS_MARK} ɴᴏ ʀᴇsᴜʟᴛs'
         if string:
-            switch_pm_text += f' For: {string}'
+            switch_pm_text += f' ғᴏʀ : {string}'
         await query.answer(results=[],
                            is_personal = True,
                            cache_time=cache_time,
@@ -68,6 +68,6 @@ async def inline_search(bot, query):
 def get_reply_markup():
     buttons = [[
         InlineKeyboardButton('⚡️ ᴜᴘᴅᴀᴛᴇs ᴄʜᴀɴɴᴇʟ ⚡️', url=UPDATES_LINK),
-        InlineKeyboardButton('💡 Support Group 💡', url=SUPPORT_LINK)
+        InlineKeyboardButton('💡 sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ 💡', url=SUPPORT_LINK)
     ]]
     return InlineKeyboardMarkup(buttons)
