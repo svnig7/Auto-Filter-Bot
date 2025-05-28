@@ -11,8 +11,8 @@ class script(object):
 ★ ʟɪʙʀᴀʀʏ : <a href=https://pyrogram.org>ᴘʀᴏɢʀᴀᴍ</a>"""
 
     MY_OWNER_TXT = """★ ɴᴀᴍᴇ : sᴠɴ
-★ ᴜsᴇʀɴᴀᴍᴇ : @svntg7
-★ ᴜᴘᴅᴀᴛᴇ ᴄʜᴀɴɴᴇʟ : @svnchnnl"""
+★ ᴜsᴇʀɴᴀᴍᴇ : @cntct_7bot
+★ ᴜᴘᴅᴀᴛᴇ ᴄʜᴀɴɴᴇʟ : @imdbposters"""
 
     STATUS_TXT = """<b>╭━━━━━━━━❰sᴛᴀᴛᴜs ʙᴀʀ❱══❍⊱❁۪۪
 ┣⪼𖨠 🗃️ ᴛᴏᴛᴀʟ ꜰɪʟᴇs : <code>{}</code>
