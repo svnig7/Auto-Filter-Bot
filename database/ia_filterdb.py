@@ -70,22 +70,22 @@ async def save_file(message, media):
             caption=file_caption
         )
     except ValidationError:
-        logging.exception(f"Validation error while saving file: {media.file_name}")
+        logging.exception(f"ᴠᴀʟɪᴅᴀᴛɪᴏɴ ᴇʀʀᴏʀ ᴡʜɪʟᴇ sᴀᴠɪɴɢ ғɪʟᴇ : {media.file_name}")
         return 'err'
     except Exception as e:
-        logging.exception(f"Unexpected error while preparing file: {e}")
+        logging.exception(f"ᴜɴᴇxᴘᴇᴄᴛᴇᴅ ᴇʀʀᴏʀ ᴡʜɪʟᴇ ᴘʀᴇᴘᴀʀɪɴɢ ғɪʟᴇ: {e}")
         return 'err'
     else:
         try:
             await file.commit()
         except DuplicateKeyError:
-            print(f'[DB] Duplicate - {file_name}')
+            print(f'[DB] ᴅᴜᴘʟɪᴄᴀᴛᴇ - {file_name}')
             return 'dup'
         except Exception as e:
-            logging.exception(f"Commit error for {file_name}: {e}")
+            logging.exception(f"ᴄᴏᴍᴍɪᴛ ᴇʀʀᴏʀ ғᴏʀ {file_name} : {e}")
             return 'err'
         else:
-            print(f'[DB] Saved - {file_name}')
+            print(f'[DB] sᴀᴠᴇᴅ - {file_name}')
             return 'suc'
 
 # For search-based retrieval
