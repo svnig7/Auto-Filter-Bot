@@ -5,10 +5,10 @@ class script(object):
 ʏᴏᴜ ᴄᴀɴ ᴜꜱᴇ ᴀꜱ ᴀᴜᴛᴏ ғɪʟᴛᴇʀ ᴡɪᴛʜ ʟɪɴᴋ sʜᴏʀᴛᴇɴᴇʀ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ.
 ɪᴛ'ꜱ ᴇᴀꜱʏ ᴛᴏ ᴜꜱᴇ ᴊᴜsᴛ ᴀᴅᴅ ᴍᴇ ᴀꜱ ᴀᴅᴍɪɴ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ɪ ᴡɪʟʟ ᴘʀᴏᴠɪᴅᴇ ᴛʜᴇʀᴇ ᴍᴏᴠɪᴇꜱ ᴡɪᴛʜ ʏᴏᴜʀ ʟɪɴᴋ ꜱʜᴏʀᴛᴇɴᴇʀ. ♻️</b>"""
 
-    MY_ABOUT_TXT = """★ sᴇʀᴠᴇʀ : <a href=https://www.heroku.com>ʜᴇʀᴏᴋᴜ</a>
-★ ᴅᴀᴛᴀʙᴀsᴇ : <a href=https://www.mongodb.com>ᴍᴏɴɢᴏ ᴅʙ</a>
-★ ʟᴀɴɢᴜᴀɢᴇ : <a href=https://www.python.org>ᴘʏᴛʜᴏɴ</a>
-★ ʟɪʙʀᴀʀʏ : <a href=https://pyrogram.org>ᴘʏʀᴏɢʀᴀᴍ</a>"""
+    MY_ABOUT_TXT = """<b>★ sᴇʀᴠᴇʀ :</b> <a href=https://www.heroku.com>ʜᴇʀᴏᴋᴜ</a>
+<b>★ ᴅᴀᴛᴀʙᴀsᴇ :</b> <a href=https://www.mongodb.com>ᴍᴏɴɢᴏ ᴅʙ</a>
+<b>★ ʟᴀɴɢᴜᴀɢᴇ :</b> <a href=https://www.python.org>ᴘʏᴛʜᴏɴ</a>
+<b>★ ʟɪʙʀᴀʀʏ :</b> <a href=https://pyrogram.org>ᴘʏʀᴏɢʀᴀᴍ</a>"""
 
     MY_OWNER_TXT = """★ ɴᴀᴍᴇ : sᴠɴ
 ★ ᴜsᴇʀɴᴀᴍᴇ : @cntct_7bot
@@ -158,6 +158,6 @@ class script(object):
 /my_plan - ᴛᴏ ᴄʜᴇᴄᴋ ʏᴏᴜʀ ᴘʟᴀɴ ᴅᴇᴛᴀɪʟs
 /plans - ᴛᴏ ɢᴇᴛ ᴘʟᴀɴ ᴅᴇᴛᴀɪʟs</b>"""
 
-    SOURCE_TXT = """<b>- ꜱᴏᴜʀᴄᴇ - <a href=https://t.me/cntct_7bot>ʜᴇʀᴇ</a>
+    SOURCE_TXT = """<b>- ꜱᴏᴜʀᴄᴇ -</b> <a href=https://t.me/cntct_7bot>ʜᴇʀᴇ</a>
 
-- ᴅᴇᴠʟᴏᴘᴇʀ - @cntct_7bot"""
+<b>- ᴅᴇᴠʟᴏᴘᴇʀ -</b> @cntct_7bot"""
