@@ -226,21 +226,21 @@ async def start(client, message):
 
 @Client.on_message(filters.command('index_channels') & filters.user(ADMINS))
 async def channels_info(bot, message):
-    """Send basic information of index channels"""
+    """sᴇɴᴅ ʙᴀsɪᴄ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ᴏғ ɪɴᴅᴇx ᴄʜᴀɴɴᴇʟs"""
     ids = INDEX_CHANNELS
     if not ids:
-        return await message.reply("Not set INDEX_CHANNELS")
+        return await message.reply("ɴᴏᴛ sᴇᴛ INDEX_CHANNELS")
 
-    text = '**Indexed Channels:**\n\n'
+    text = '**ɪɴᴅᴇxᴇᴅ ᴄʜᴀɴɴᴇʟs :**\n\n'
     for id in ids:
         chat = await bot.get_chat(id)
         text += f'{chat.title}\n'
-    text += f'\n**Total:** {len(ids)}'
+    text += f'\n**ᴛᴏᴛᴀʟ :** {len(ids)}'
     await message.reply(text)
 
 @Client.on_message(filters.command('stats') & filters.user(ADMINS))
 async def stats(bot, message):
-    msg = await message.reply('Please Wait...')
+    msg = await message.reply('ᴘʟᴇᴀsᴇ ᴡᴀɪᴛ...')
     files = await Media.count_documents()
     users = await db.total_users_count()
     chats = await db.total_chat_count()
@@ -253,114 +253,114 @@ async def stats(bot, message):
 async def settings(client, message):
     userid = message.from_user.id if message.from_user else None
     if not userid:
-        return await message.reply("<b>You are Anonymous admin you can't use this command !</b>")
+        return await message.reply("<b>ʏᴏᴜ ᴀʀᴇ ᴀɴᴏɴʏᴍᴏᴜs ᴀᴅᴍɪɴ ʏᴏᴜ ᴄᴀɴ'ᴛ ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ !</b>")
     chat_type = message.chat.type
     if chat_type not in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
-        return await message.reply_text("Use this command in group.")
+        return await message.reply_text("ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ɪɴ ɢʀᴏᴜᴘ.")
     grp_id = message.chat.id
     if not await is_check_admin(client, grp_id, message.from_user.id):
-        return await message.reply_text('You not admin in this group.')
+        return await message.reply_text('ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀᴅᴍɪɴ ɪɴ ᴛʜɪs ɢʀᴏᴜᴘ.')
     settings = await get_settings(grp_id)
     if settings is not None:
         buttons = [[
-            InlineKeyboardButton('Auto Filter', callback_data=f'setgs#auto_filter#{settings["auto_filter"]}#{grp_id}'),
-            InlineKeyboardButton('✅ Yes' if settings["auto_filter"] else '❌ No', callback_data=f'setgs#auto_filter#{settings["auto_filter"]}#{grp_id}')
+            InlineKeyboardButton('ᴀᴜᴛᴏ ғɪʟᴛᴇʀ', callback_data=f'setgs#auto_filter#{settings["auto_filter"]}#{grp_id}'),
+            InlineKeyboardButton('✅ ʏᴇs' if settings["auto_filter"] else '❌ ɴᴏ', callback_data=f'setgs#auto_filter#{settings["auto_filter"]}#{grp_id}')
         ],[
-            InlineKeyboardButton('File Secure', callback_data=f'setgs#file_secure#{settings["file_secure"]}#{grp_id}'),
-            InlineKeyboardButton('✅ Yes' if settings["file_secure"] else '❌ No', callback_data=f'setgs#file_secure#{settings["file_secure"]}#{grp_id}')
+            InlineKeyboardButton('ғɪʟᴇ sᴇᴄᴜʀᴇ', callback_data=f'setgs#file_secure#{settings["file_secure"]}#{grp_id}'),
+            InlineKeyboardButton('✅ ʏᴇs' if settings["file_secure"] else '❌ ɴᴏ', callback_data=f'setgs#file_secure#{settings["file_secure"]}#{grp_id}')
         ],[
-            InlineKeyboardButton('IMDb Poster', callback_data=f'setgs#imdb#{settings["imdb"]}#{grp_id}'),
-            InlineKeyboardButton('✅ Yes' if settings["imdb"] else '❌ No', callback_data=f'setgs#imdb#{settings["imdb"]}#{grp_id}')
+            InlineKeyboardButton('ɪᴍᴅʙ ᴘᴏsᴛᴇʀ', callback_data=f'setgs#imdb#{settings["imdb"]}#{grp_id}'),
+            InlineKeyboardButton('✅ ʏᴇs' if settings["imdb"] else '❌ ɴᴏ', callback_data=f'setgs#imdb#{settings["imdb"]}#{grp_id}')
         ],[
-            InlineKeyboardButton('Spelling Check', callback_data=f'setgs#spell_check#{settings["spell_check"]}#{grp_id}'),
-            InlineKeyboardButton('✅ Yes' if settings["spell_check"] else '❌ No', callback_data=f'setgs#spell_check#{settings["spell_check"]}#{grp_id}')
+            InlineKeyboardButton('sᴘᴇʟʟɪɴɢ ᴄʜᴇᴄᴋ', callback_data=f'setgs#spell_check#{settings["spell_check"]}#{grp_id}'),
+            InlineKeyboardButton('✅ ʏᴇs' if settings["spell_check"] else '❌ ɴᴏ', callback_data=f'setgs#spell_check#{settings["spell_check"]}#{grp_id}')
         ],[
-            InlineKeyboardButton('Auto Delete', callback_data=f'setgs#auto_delete#{settings["auto_delete"]}#{grp_id}'),
-            InlineKeyboardButton(f'{get_readable_time(DELETE_TIME)}' if settings["auto_delete"] else '❌ No', callback_data=f'setgs#auto_delete#{settings["auto_delete"]}#{grp_id}')
+            InlineKeyboardButton('ᴀᴜᴛᴏ ᴅᴇʟᴇᴛᴇ', callback_data=f'setgs#auto_delete#{settings["auto_delete"]}#{grp_id}'),
+            InlineKeyboardButton(f'{get_readable_time(DELETE_TIME)}' if settings["auto_delete"] else '❌ ɴᴏ', callback_data=f'setgs#auto_delete#{settings["auto_delete"]}#{grp_id}')
         ],[
-            InlineKeyboardButton('Welcome', callback_data=f'setgs#welcome#{settings["welcome"]}#{grp_id}',),
-            InlineKeyboardButton('✅ Yes' if settings["welcome"] else '❌ No', callback_data=f'setgs#welcome#{settings["welcome"]}#{grp_id}'),
+            InlineKeyboardButton('ᴡᴇʟᴄᴏᴍᴇ', callback_data=f'setgs#welcome#{settings["welcome"]}#{grp_id}',),
+            InlineKeyboardButton('✅ ʏᴇs' if settings["welcome"] else '❌ ɴᴏ', callback_data=f'setgs#welcome#{settings["welcome"]}#{grp_id}'),
         ],[
-            InlineKeyboardButton('Shortlink', callback_data=f'setgs#shortlink#{settings["shortlink"]}#{grp_id}'),
-            InlineKeyboardButton('✅ Yes' if settings["shortlink"] else '❌ No', callback_data=f'setgs#shortlink#{settings["shortlink"]}#{grp_id}'),
+            InlineKeyboardButton('sʜᴏʀᴛ ʟɪɴᴋ', callback_data=f'setgs#shortlink#{settings["shortlink"]}#{grp_id}'),
+            InlineKeyboardButton('✅ ʏᴇs' if settings["shortlink"] else '❌ ɴᴏ', callback_data=f'setgs#shortlink#{settings["shortlink"]}#{grp_id}'),
         ],[
-            InlineKeyboardButton('Result Page', callback_data=f'setgs#links#{settings["links"]}#{str(grp_id)}'),
-            InlineKeyboardButton('⛓ Link' if settings["links"] else '🧲 Button', callback_data=f'setgs#links#{settings["links"]}#{str(grp_id)}')
+            InlineKeyboardButton('ʀᴇsᴜʟᴛ ᴘᴀɢᴇ', callback_data=f'setgs#links#{settings["links"]}#{str(grp_id)}'),
+            InlineKeyboardButton('⛓ ʟɪɴᴋ' if settings["links"] else '🧲 ʙᴜᴛᴛᴏɴ', callback_data=f'setgs#links#{settings["links"]}#{str(grp_id)}')
         ],[
-            InlineKeyboardButton('Fsub', callback_data=f'setgs#is_fsub#{settings.get("is_fsub", IS_FSUB)}#{str(grp_id)}'),
-            InlineKeyboardButton('✅ On' if settings.get("is_fsub", IS_FSUB) else '❌ Off', callback_data=f'setgs#is_fsub#{settings.get("is_fsub", IS_FSUB)}#{str(grp_id)}')
+            InlineKeyboardButton('ғsᴜʙ', callback_data=f'setgs#is_fsub#{settings.get("is_fsub", IS_FSUB)}#{str(grp_id)}'),
+            InlineKeyboardButton('✅ ᴏɴ' if settings.get("is_fsub", IS_FSUB) else '❌ ᴏғғ', callback_data=f'setgs#is_fsub#{settings.get("is_fsub", IS_FSUB)}#{str(grp_id)}')
         ],[
-            InlineKeyboardButton('Stream', callback_data=f'setgs#is_stream#{settings.get("is_stream", IS_STREAM)}#{str(grp_id)}'),
-            InlineKeyboardButton('✅ On' if settings.get("is_stream", IS_STREAM) else '❌ Off', callback_data=f'setgs#is_stream#{settings.get("is_stream", IS_STREAM)}#{str(grp_id)}')
+            InlineKeyboardButton('sᴛʀᴇᴀᴍ', callback_data=f'setgs#is_stream#{settings.get("is_stream", IS_STREAM)}#{str(grp_id)}'),
+            InlineKeyboardButton('✅ ᴏɴ' if settings.get("is_stream", IS_STREAM) else '❌ ᴏғғ', callback_data=f'setgs#is_stream#{settings.get("is_stream", IS_STREAM)}#{str(grp_id)}')
         ],[
-            InlineKeyboardButton('❌ Close ❌', callback_data='close_data')
+            InlineKeyboardButton('❌ ᴄʟᴏsᴇ ❌', callback_data='close_data')
         ]]
         await message.reply_text(
-            text=f"Change your settings for <b>'{message.chat.title}'</b> as your wish. ⚙",
+            text=f"ᴄʜᴀɴɢᴇ ʏᴏᴜʀ sᴇᴛᴛɪɴɢs ғᴏʀ <b>'{message.chat.title}'</b> ᴀs ʏᴏᴜʀ ᴡɪsʜ. ⚙",
             reply_markup=InlineKeyboardMarkup(buttons),
             parse_mode=enums.ParseMode.HTML
         )
     else:
-        await message.reply_text('Something went wrong!')
+        await message.reply_text('sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ !')
 
 @Client.on_message(filters.command('set_template'))
 async def save_template(client, message):
     userid = message.from_user.id if message.from_user else None
     if not userid:
-        return await message.reply("<b>You are Anonymous admin you can't use this command !</b>")
+        return await message.reply("<b>ʏᴏᴜ ᴀʀᴇ ᴀɴᴏɴʏᴍᴏᴜs ᴀᴅᴍɪɴ ʏᴏᴜ ᴄᴀɴ'ᴛ ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ !</b>")
     chat_type = message.chat.type
     if chat_type not in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
-        return await message.reply_text("Use this command in group.")      
+        return await message.reply_text("ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ɪɴ ɢʀᴏᴜᴘ.")      
     grp_id = message.chat.id
     title = message.chat.title
     if not await is_check_admin(client, grp_id, message.from_user.id):
-        return await message.reply_text('You not admin in this group.')
+        return await message.reply_text('ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀᴅᴍɪɴ ɪɴ ᴛʜɪs ɢʀᴏᴜᴘ.')
     try:
         template = message.text.split(" ", 1)[1]
     except:
-        return await message.reply_text("Command Incomplete!")   
+        return await message.reply_text("ᴄᴏᴍᴍᴀɴᴅ ɪɴᴄᴏᴍᴘʟᴇᴛᴇ !")   
     await save_group_settings(grp_id, 'template', template)
-    await message.reply_text(f"Successfully changed template for {title} to\n\n{template}")  
+    await message.reply_text(f"sᴜᴄᴄᴇssғᴜʟʟʏ ᴄʜᴀɴɢᴇᴅ ᴛᴇᴍᴘʟᴀᴛᴇ ғᴏʀ {title} ᴛᴏ\n\n{template}")  
     
 @Client.on_message(filters.command('set_caption'))
 async def save_caption(client, message):
     userid = message.from_user.id if message.from_user else None
     if not userid:
-        return await message.reply("<b>You are Anonymous admin you can't use this command !</b>")
+        return await message.reply("<b>ʏᴏᴜ ᴀʀᴇ ᴀɴᴏɴʏᴍᴏᴜs ᴀᴅᴍɪɴ ʏᴏᴜ ᴄᴀɴ'ᴛ ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ !</b>")
     chat_type = message.chat.type
     if chat_type not in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
-        return await message.reply_text("Use this command in group.")      
+        return await message.reply_text("ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ɪɴ ɢʀᴏᴜᴘ.")      
     grp_id = message.chat.id
     title = message.chat.title
     if not await is_check_admin(client, grp_id, message.from_user.id):
-        return await message.reply_text('You not admin in this group.')
+        return await message.reply_text('ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀᴅᴍɪɴ ɪɴ ᴛʜɪs ɢʀᴏᴜᴘ.')
     try:
         caption = message.text.split(" ", 1)[1]
     except:
-        return await message.reply_text("Command Incomplete!") 
+        return await message.reply_text("ᴄᴏᴍᴍᴀɴᴅ ɪɴᴄᴏᴍᴘʟᴇᴛᴇ !") 
     await save_group_settings(grp_id, 'caption', caption)
-    await message.reply_text(f"Successfully changed caption for {title} to\n\n{caption}")
+    await message.reply_text(f"sᴜᴄᴄᴇssғᴜʟʟʏ ᴄʜᴀɴɢᴇᴅ ᴄᴀᴘᴛɪᴏɴ ғᴏʀ {title} ᴛᴏ\n\n{caption}")
         
 @Client.on_message(filters.command('set_shortlink'))
 async def save_shortlink(client, message):
     userid = message.from_user.id if message.from_user else None
     if not userid:
-        return await message.reply("<b>You are Anonymous admin you can't use this command !</b>")
+        return await message.reply("<b>ʏᴏᴜ ᴀʀᴇ ᴀɴᴏɴʏᴍᴏᴜs ᴀᴅᴍɪɴ ʏᴏᴜ ᴄᴀɴ'ᴛ ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ !</b>")
     chat_type = message.chat.type
     if chat_type not in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
-        return await message.reply_text("Use this command in group.")    
+        return await message.reply_text("ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ɪɴ ɢʀᴏᴜᴘ.")    
     grp_id = message.chat.id
     title = message.chat.title
     if not await is_check_admin(client, grp_id, message.from_user.id):
-        return await message.reply_text('You not admin in this group.')
+        return await message.reply_text('ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀᴅᴍɪɴ ɪɴ ᴛʜɪs ɢʀᴏᴜᴘ.')
     try:
         _, url, api = message.text.split(" ", 2)
     except:
-        return await message.reply_text("<b>Command Incomplete:-\n\ngive me a shortlink & api along with the command...\n\nEx:- <code>/shortlink mdisklink.link 5843c3cc645f5077b2200a2c77e0344879880b3e</code>")   
+        return await message.reply_text("<b>ᴄᴏᴍᴍᴀɴᴅ ɪɴᴄᴏᴍᴘʟᴇᴛᴇ :-\n\nɢɪᴠᴇ ᴍᴇ ᴀ sʜᴏʀᴛʟɪɴᴋ & ᴀᴘɪ ᴀʟᴏɴɢ ᴡɪᴛʜ ᴛʜᴇ ᴄᴏᴍᴍᴀɴᴅ...\n\nᴇx :- <code>/shortlink mdisklink.link 5843c3cc645f5077b2200a2c77e0344879880b3e</code>")   
     try:
         await get_shortlink(url, api, f'https://t.me/{temp.U_NAME}')
     except:
-        return await message.reply_text("Your shortlink API or URL invalid, Please Check again!")   
+        return await message.reply_text("ʏᴏᴜʀ sʜᴏʀᴛʟɪɴᴋ ᴀᴘɪ ᴏʀ ᴜʀʟ ɪɴᴠᴀʟɪᴅ, ᴘʟᴇᴀsᴇ ᴄʜᴇᴄᴋ ᴀɢᴀɪɴ !")   
     await save_group_settings(grp_id, 'url', url)
     await save_group_settings(grp_id, 'api', api)
     await message.reply_text(f"Successfully changed shortlink for {title} to\n\nURL - {url}\nAPI - {api}")
