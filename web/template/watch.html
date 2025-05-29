@@ -1,80 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta property="og:image" content="https://i.ibb.co/M8S0Zzj/live-streaming.png" itemprop="thumbnailUrl">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>%s</title>
-    <link rel="stylesheet" type='text/css' href="https://drive----google.com/uc?export=view&id=1pVLG4gZy7jdow3sO-wFS06aP_A9QX0O6">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Delius">
-    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.9/plyr.css" />
+  <meta charset="UTF-8">
+  <meta property="og:image" content="https://i.ibb.co/M8S0Zzj/live-streaming.png" itemprop="thumbnailUrl">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>%s</title>
 
+  <!-- Stylesheets -->
+  <link rel="stylesheet" type="text/css" href="https://drive.google.com/uc?export=view&id=1pVLG4gZy7jdow3sO-wFS06aP_A9QX0O6">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Delius">
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.6.9/plyr.css" />
 
-<style>
-      marquee{
+  <style>
+    marquee {
       font-size: 30px;
       font-weight: 800;
-      color: Blue;
+      color: blue;
       font-family: sans-serif;
-      }
-    </style>
-    <style>
-      marquee{
-      font-size: 30px;
-      font-weight: 800;
-      color: Blue;
-      font-family: sans-serif;
-      }
-    </style>
+    }
+  </style>
+	<style>
+		.download-btn {
+			display: inline-block;
+			background-color: #007bff;
+			color: #fff;
+			padding: 10px 20px;
+			font-weight: bold;
+			border-radius: 5px;
+			text-decoration: none;
+			transition: background-color 0.3s ease;
+		}
+		
+		.download-btn:hover {
+			background-color: #0056b3;
+		}
+	</style>
+	
 </head>
 
 <body>
+
+  <header>
+    <marquee bgcolor="#f7f305">
+      %s
+    </marquee>
+  </header>
+
+  <div class="container">
+	  <video class="player" controls playsinline>
+		  <source src="%s" type="video/mp4">
+		  Your browser does not support the video tag.
+	  </video>
+	  
+	  <!-- Download Button -->
+	  <div style="text-align: center; margin-top: 15px;">
+		  <a href="%s" download class="download-btn">⬇️ Download Video</a>
+	  </div>
+  </div>
 	
-    <header>
-        <marquee bgcolor="#f7f305"
-<div class="toogle"></div>
-        <div id="file-name">
-            %s
-        </div>
-</marquee>
-    </header>
+  <footer>
+    <center><h4>Video not playing? Possibly because your browser or the player doesn't support the codec. Please download and watch.</h4></center>
+  </footer>
 
-    <div class="container">
-        <tag src="%s" class="player"></tag>
-    </div>
+  <script src="https://cdn.plyr.io/3.6.9/plyr.js"></script>
+  <script>
+    const controls = [
+      'play-large',
+      'rewind',
+      'play',
+      'fast-forward',
+      'progress',
+      'current-time',
+      'duration',
+      'mute',
+      'volume',
+      'captions',
+      'settings',
+      'pip',
+      'airplay',
+      'download',
+      'fullscreen'
+    ];
 
-    <footer>
-	    <center><h4>Video not playing? Possibly because your browser or the player doesn't support codec. Please download and watch.</h4></center>
-	    
-    </footer>
-    <script src="https://cdn.plyr.io/3.6.9/plyr.js"></script>
-	<script>
-        const controls = [
-              'play-large',
-              'rewind',
-              'play', 
-              'fast-forward', 
-              'progress', 
-              'current-time',
-              'duration',
-              'mute',
-              'volume',
-              'captions',
-              'settings',
-              'pip',
-              'airplay',
-              'download',
-              'fullscreen'
-            ];
-        document.addEventListener('DOMContentLoaded', () => {
-            const player = Plyr.setup('.player', { controls });
-        });
+    document.addEventListener('DOMContentLoaded', () => {
+      Plyr.setup('.player', { controls });
+    });
+  </script>
 
-        const body = document.querySelector('body');
-        const footer = document.querySelector('footer');
-        const toogle = document.querySelector('.toogle');
-    </script>
 </body>
 </html>
