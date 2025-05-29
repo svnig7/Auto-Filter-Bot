@@ -286,7 +286,7 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
 async def lang_next_page(bot, query):
     ident, req, key, lang, l_offset, offset = query.data.split("#")
     if int(req) != query.from_user.id:
-        return await query.answer(f"Hello {query.from_user.first_name},\nDon't Click Other Results!", show_alert=True)
+        return await query.answer(f"ʜᴇʟʟᴏ {query.from_user.first_name},\nᴅᴏɴ'ᴛ ᴄʟɪᴄᴋ ᴏᴛʜᴇʀs ʀᴇsᴜʟᴛs !", show_alert=True)
 
     try:
         l_offset = int(l_offset)
@@ -298,7 +298,7 @@ async def lang_next_page(bot, query):
     settings = await get_settings(query.message.chat.id)
     del_msg = f"\n\n<b>⚠️ ᴛʜɪs ᴍᴇssᴀɢᴇ ᴡɪʟʟ ʙᴇ ᴀᴜᴛᴏ ᴅᴇʟᴇᴛᴇ ᴀꜰᴛᴇʀ <code>{get_readable_time(DELETE_TIME)}</code> ᴛᴏ ᴀᴠᴏɪᴅ ᴄᴏᴘʏʀɪɢʜᴛ ɪssᴜᴇs</b>" if settings["auto_delete"] else ''
     if not search:
-        await query.answer(f"Hello {query.from_user.first_name},\nSend New Request Again!", show_alert=True)
+        await query.answer(f"ʜᴇʟʟᴏ {query.from_user.first_name},\nsᴇɴᴅ ɴᴇᴡ ʀᴇᴏ̨ᴜᴇsᴛ ᴀɢᴀɪɴ !", show_alert=True)
         return 
 
     files, n_offset, total = await get_search_results(search, offset=l_offset, lang=lang)
@@ -361,18 +361,18 @@ async def lang_next_page(bot, query):
 async def advantage_spoll_choker(bot, query):
     _, id, user = query.data.split('#')
     if int(user) != 0 and query.from_user.id != int(user):
-        return await query.answer(f"Hello {query.from_user.first_name},\nDon't Click Other Results!", show_alert=True)
+        return await query.answer(f"ʜᴇʟʟᴏ {query.from_user.first_name},\nᴅᴏɴ'ᴛ ᴄʟɪᴄᴋ ᴏᴛʜᴇʀs ʀᴇsᴜʟᴛs !", show_alert=True)
 
     movie = await get_poster(id, id=True)
     search = movie.get('title')
-    await query.answer('Check In My Database...')
+    await query.answer('ᴄʜᴇᴄᴋ ɪɴ ᴍʏ ᴅᴀᴛᴀʙᴀsᴇ...')
     files, offset, total_results = await get_search_results(search)
     if files:
         k = (search, files, offset, total_results)
         await auto_filter(bot, query, k)
     else:
         await bot.send_message(LOG_CHANNEL, script.NO_RESULT_TXT.format(query.message.chat.title, query.message.chat.id, query.from_user.mention, search))
-        k = await query.message.edit(f"👋 Hello {query.from_user.mention},\n\nI don't find <b>'{search}'</b> in my database. 😔")
+        k = await query.message.edit(f"👋 ʜᴇʟʟᴏ {query.from_user.mention},\n\nɪ ᴅᴏɴ'ᴛ ғɪɴᴅ <b>'{search}'</b> ɪɴ ᴍʏ ᴅᴀᴛᴀʙᴀsᴇ. 😔")
         await asyncio.sleep(60)
         await k.delete()
         try:
@@ -390,13 +390,13 @@ async def upi_payment_info(client, callback_query):
     ]
     btn.append(
         [
-            InlineKeyboardButton("QR ᴄᴏᴅᴇ", callback_data="qrcode_info") ,                   
-            InlineKeyboardButton("UPI ID", callback_data="upiid_info")
+            InlineKeyboardButton("ᴏ̨ʀ ᴄᴏᴅᴇ", callback_data="qrcode_info") ,                   
+            InlineKeyboardButton("ᴜᴘɪ ɪᴅ", callback_data="upiid_info")
         ]
     )
     btn.append(
         [            
-            InlineKeyboardButton("⇚ Bᴀᴄᴋ", callback_data="buy_premium")
+            InlineKeyboardButton("⇚ ʙᴀᴄᴋ", callback_data="buy_premium")
         ]
     ) 
     reply_markup = InlineKeyboardMarkup(btn)
@@ -420,7 +420,7 @@ async def qr_code_info(client, callback_query):
         for admin in ADMINS
     ]
     btn.append(
-        [InlineKeyboardButton("⇚ Bᴀᴄᴋ", callback_data="Upi")]
+        [InlineKeyboardButton("⇚ ʙᴀᴄᴋ", callback_data="Upi")]
     )
     reply_markup = InlineKeyboardMarkup(btn)
     await client.edit_message_media(
@@ -444,7 +444,7 @@ async def upi_id_info(client, callback_query):
         for admin in ADMINS
     ]
     btn.append(
-        [InlineKeyboardButton("⇚ Bᴀᴄᴋ", callback_data="Upi")]
+        [InlineKeyboardButton("⇚ ʙᴀᴄᴋ", callback_data="Upi")]
     )
     reply_markup = InlineKeyboardMarkup(btn)
     await cmd.edit(
