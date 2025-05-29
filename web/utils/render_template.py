@@ -9,7 +9,6 @@ import aiofiles
 import logging
 import aiohttp
 
-
 async def media_watch(message_id):
     media_msg = await temp.BOT.get_messages(BIN_CHANNEL, message_id)
     file_properties = await TGCustomYield().generate_file_properties(media_msg)
@@ -19,7 +18,7 @@ async def media_watch(message_id):
     if tag == 'video':
         async with aiofiles.open('web/template/watch.html') as r:
             heading = 'ᴡᴀᴛᴄʜ - {}'.format(file_name)
-            html = (await r.read()).replace('tag', tag) % (heading, file_name, src)
+            html = (await r.read()).replace('tag', tag) % (heading, file_name, src, src)
     else:
         html = '<h1>ᴛʜɪs ɪs ɴᴏᴛ sᴛʀᴇᴀᴍᴀʙʟᴇ ғɪʟᴇ</h1>'
     return html
