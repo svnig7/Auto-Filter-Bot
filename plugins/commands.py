@@ -139,11 +139,13 @@ async def start(client, message):
         if not files:
             return await message.reply('ɴᴏ sᴜᴄʜ ᴀʟʟ ғɪʟᴇ ᴇxɪsᴛ !')
         settings = await get_settings(int(grp_id))
+        
         for file in files:
-        reply_markup = get_reply_markup()
-        f_caption = FILE_CAPTION.format(
-            file_caption=file.caption or file.file_name
-        )
+            reply_markup = get_reply_markup()
+            f_caption = FILE_CAPTION.format(
+                file_caption=file.caption or file.file_name
+            )
+            
             if settings.get('is_stream', IS_STREAM):
                 btn = [[
                     InlineKeyboardButton("✛ ᴡᴀᴛᴄʜ & ᴅᴏᴡɴʟᴏᴀᴅ ✛", callback_data=f"stream#{file.file_id}")
