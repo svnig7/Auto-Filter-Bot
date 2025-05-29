@@ -32,9 +32,8 @@ async def inline_search(bot, query):
     for file in files:
         reply_markup = get_reply_markup()
         f_caption=FILE_CAPTION.format(
-            file_name=file.file_name,
-            file_size=get_size(file.file_size),
-            caption=file.caption
+            caption=file.caption,
+            file_size=get_size(file.file_size)
         )
         results.append(
             InlineQueryResultCachedDocument(
