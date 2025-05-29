@@ -461,8 +461,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
         except:
             user = query.from_user.id
         if int(user) != 0 and query.from_user.id != int(user):
-            return await query.answer(f"Hello {query.from_user.first_name},\nThis Is Not For You!", show_alert=True)
-        await query.answer("Closed!")
+            return await query.answer(f"ʜᴇʟʟᴏ {query.from_user.first_name},\nᴛʜɪs ɪs ɴᴏᴛ ғᴏʀ ʏᴏᴜ !", show_alert=True)
+        await query.answer("ᴄʟᴏsᴇᴅ !")
         await query.message.delete()
         try:
             await query.message.reply_to_message.delete()
@@ -473,7 +473,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ident, file_id = query.data.split("#")
         user = query.message.reply_to_message.from_user.id
         if int(user) != 0 and query.from_user.id != int(user):
-            return await query.answer(f"Hello {query.from_user.first_name},\nDon't Click Other Results!", show_alert=True)
+            return await query.answer(f"ʜᴇʟʟᴏ {query.from_user.first_name},\nᴅᴏɴ'ᴛ ᴄʟɪᴄᴋ ᴏᴛʜᴇʀs ʀᴇsᴜʟᴛs !", show_alert=True)
         await query.answer(url=f"https://t.me/{temp.U_NAME}?start=file_{query.message.chat.id}_{file_id}")
         
     elif query.data == "get_trail":
@@ -485,7 +485,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             await query.message.edit_text(text=new_text)
             return
         else:
-            new_text= "**🤣 you already used free now no more free trail. please buy subscription here are our 👉 /plans**"
+            new_text= "**🤣 ʏᴏᴜ ᴀʟʀᴇᴀᴅʏ ᴜsᴇᴅ ғʀᴇᴇ, ɴᴏᴡ ɴᴏ ᴍᴏʀᴇ ғʀᴇᴇ ᴛʀᴀɪʟs. ᴘʟᴇᴀsᴇ ʙᴜʏ sᴜʙsᴄʀɪᴘᴛɪᴏɴ ғʀᴏᴍ ʜᴇʀᴇ, ᴏᴜʀ 👉 /plans**"
             await query.message.edit_text(text=new_text)
             return
             
@@ -497,7 +497,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         reply_markup = InlineKeyboardMarkup(btn)
         await query.message.reply_photo(
             photo="https://graph.org/file/ea8423d123dd90e34e10c.jpg",
-            caption="**⚡️Buy Premium Now\n\n ╭━━━━━━━━╮\n    Premium Plans\n  • ₹10 - 1 day (Trial)\n  • ₹25 - 1 Week (Trial)\n  • ₹50 - 1 Month\n  • ₹120 - 3 Months\n  • ₹220 - 6 Months\n  • ₹400 - 1 Year\n╰━━━━━━━━╯\n\nPremium Features ♤ᵀ&ᶜ\n\n☆ New/Old Movies and Series\n☆ High Quality available\n☆ Get Files Directly \n☆ High speed Download links\n☆ Full Admin support \n☆ Request will be completed in 1 hour if available.\n\n**",
+            caption="**⚡️ʙᴜʏ ᴘʀᴇᴍɪᴜᴍ ɴᴏᴡ\n\n ╭━━━━━━━━╮\n    ᴘʀᴇᴍɪᴜᴍ ᴘʟᴀɴs\n  • ₹10 - 1 ᴅᴀʏ ( ᴛʀɪᴀʟ )\n  • ₹25 - 1 ᴡᴇᴇᴋ ( ᴛʀɪᴀʟ )\n  • ₹50 - 1 ᴍᴏɴᴛʜ\n  • ₹120 - 3 ᴍᴏɴᴛʜs\n  • ₹220 - 6 ᴍᴏɴᴛʜs\n  • ₹400 - 1 ᴍᴏɴᴛʜs\n╰━━━━━━━━╯\n\nᴘʀᴇᴍɪᴜᴍ ғᴇᴀᴛᴜʀᴇs :-\n\n☆ ɴᴇᴡ / ᴏʟᴅ ᴍᴏᴠɪᴇ ᴀɴᴅ ᴛᴠ sᴇʀɪᴇs\n☆ ʜɪɢʜ ᴏ̨ᴜᴀʟɪᴛʏ ᴀᴠᴀɪʟᴀʙʟᴇ\n☆ ɢᴇᴛ ғɪʟᴇs ᴅɪʀᴇᴄᴛʟʏ \n☆ ʜɪɢʜ sᴘᴇᴇᴅ ᴅᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋs\n☆ ғᴜʟʟ ᴀᴅᴍɪɴ sᴜᴘᴘᴏʀᴛ \n☆ ʀᴇᴏ̨ᴜᴇsᴛ ᴡɪʟʟ ʙᴇ ᴄᴏᴍᴘʟᴇᴛᴇᴅ ɪɴ 1 ʜᴏᴜʀ ɪғ ᴀᴠᴀɪʟᴀʙʟᴇ.\n\n**",
             reply_markup=reply_markup
         )
         return 
@@ -507,9 +507,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
         settings = await get_settings(int(mc.split("_", 2)[1]))
         btn = await is_subscribed(client, query, settings['fsub'])
         if btn:
-            await query.answer(f"Hello {query.from_user.first_name},\nPlease join my updates channel and try again.", show_alert=True)
+            await query.answer(f"ʜᴇʟʟᴏ {query.from_user.first_name},\nᴘʟᴇᴀsᴇ ᴊᴏɪɴ ᴍʏ ᴜᴘᴅᴀᴛᴇs ᴄʜᴀɴɴᴇʟ ᴀɴᴅ ᴛʀʏ ᴀɢᴀɪɴ.", show_alert=True)
             btn.append(
-                [InlineKeyboardButton("🔁 Try Again 🔁", callback_data=f"checksub#{mc}")]
+                [InlineKeyboardButton("🔁 ᴛʀʏ ᴀɢᴀɪɴ 🔁", callback_data=f"checksub#{mc}")]
             )
             await query.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(btn))
             return
@@ -521,27 +521,27 @@ async def cb_handler(client: Client, query: CallbackQuery):
         settings = await get_settings(int(chatid))
         btn = await is_subscribed(client, query, settings['fsub'])
         if btn:
-           await query.answer("Kindly Join Given Channel To Get Unmute", show_alert=True)
+           await query.answer("ᴋɪɴᴅʟʏ ᴊᴏɪɴ ɢɪᴠᴇɴ ᴄʜᴀɴɴᴇʟ ᴛᴏ ɢᴇᴛ ᴜɴᴍᴜᴛᴇ", show_alert=True)
         else:
             await client.unban_chat_member(query.message.chat.id, user_id)
-            await query.answer("Unmuted Successfully !", show_alert=True)
+            await query.answer("ᴜɴᴍᴜᴛᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ !", show_alert=True)
    
     elif query.data == "buttons":
         await query.answer("⚠️")
 
     elif query.data == "instructions":
-        await query.answer("Movie request format.\nExample:\nBlack Adam or Black Adam 2022\n\nTV Reries request format.\nExample:\nLoki S01E01 or Loki S01 E01\n\nDon't use symbols.", show_alert=True)
+        await query.answer("ᴍᴏᴠɪᴇ ʀᴇᴏ̨ᴜᴇsᴛ ғᴏʀᴍᴀᴛ.\nᴇxᴀᴍᴘʟᴇ :\nBlack Adam ᴏʀ Black Adam 2022\n\nᴛᴠ sᴇʀɪᴇs ʀᴇᴏ̨ᴜᴇsᴛ ғᴏʀᴍᴀᴛ.\nᴇxᴀᴍᴘʟᴇ :\nLoki S01E01 ᴏʀ Loki S01 E01\n\nᴅᴏɴ'ᴛ ᴜsᴇ sʏᴍʙᴏʟs.", show_alert=True)
 
     
     elif query.data == "start":
-        await query.answer('Welcome!')
+        await query.answer('ᴡᴇʟᴄᴏᴍᴇ !')
         buttons = [[
-            InlineKeyboardButton('⤬ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ ⤬', url=f'http://t.me/{temp.U_NAME}?startgroup=start')
+            InlineKeyboardButton('⤬ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ⤬', url=f'http://t.me/{temp.U_NAME}?startgroup=start')
         ],[
-            InlineKeyboardButton('🌿 ꜱᴜᴘᴘᴏʀᴛ', callback_data="my_about"),
+            InlineKeyboardButton('🌿 ᴀʙᴏᴜᴛ', callback_data="my_about"),
             InlineKeyboardButton('👤 ᴏᴡɴᴇʀ', callback_data='my_owner')
         ],[
-            InlineKeyboardButton('🍁 ғᴇᴀᴛᴜʀᴇs', callback_data='help'),
+            InlineKeyboardButton('🍁 ʜᴇʟᴘ', callback_data='help'),
             InlineKeyboardButton('🔐 ᴘʀᴇᴍɪᴜᴍ', callback_data='buy_premium')
         ],[
             InlineKeyboardButton('💰 ᴇᴀʀɴ ᴍᴏɴᴇʏ ʙʏ ʙᴏᴛ 💰', callback_data='earn')
@@ -569,7 +569,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
     elif query.data == "stats":
         if query.from_user.id not in ADMINS:
-            return await query.answer("ADMINS Only!", show_alert=True)
+            return await query.answer("ᴀᴅᴍɪɴs ᴏɴʟʏ !", show_alert=True)
         files = await Media.count_documents()
         users = await db.total_users_count()
         chats = await db.total_chat_count()
@@ -624,10 +624,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
         
     elif query.data == "help":
         buttons = [[
-            InlineKeyboardButton('Group Commands', callback_data='infinity_group_commands')
+            InlineKeyboardButton('ɢʀᴏᴜᴘ ᴄᴏᴍᴍᴀɴᴅs', callback_data='infinity_group_commands')
         ],[
-            InlineKeyboardButton('User Command', callback_data='user_command'),
-            InlineKeyboardButton('Admin Command', callback_data='admin_command')
+            InlineKeyboardButton('ᴜsᴇʀs ᴄᴏᴍᴍᴀɴᴅs', callback_data='user_command'),
+            InlineKeyboardButton('ᴀᴅᴍɪɴs ᴄᴏᴍᴍᴀɴᴅs', callback_data='admin_command')
         ],[
             InlineKeyboardButton('« ʙᴀᴄᴋ', callback_data='start')
         ]]
@@ -649,7 +649,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         
     elif query.data == "admin_command":
         if query.from_user.id not in ADMINS:
-            return await query.answer("ADMINS Only!", show_alert=True)
+            return await query.answer("ᴀᴅᴍɪɴs ᴏɴʟʏ !", show_alert=True)
         buttons = [[
             InlineKeyboardButton('« ʙᴀᴄᴋ', callback_data='help')
         ]]
@@ -658,6 +658,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             text=script.ADMIN_COMMAND_TXT,
             reply_markup=reply_markup
         )
+        
     elif query.data == "infinity_group_commands":
         buttons = [[
             InlineKeyboardButton('« ʙᴀᴄᴋ', callback_data='help')
@@ -667,6 +668,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             text=script.GROUP_COMMAND_TXT,
             reply_markup=reply_markup
         )
+        
     elif query.data == "source":
         buttons = [[
             InlineKeyboardButton('≼ ʙᴀᴄᴋ', callback_data='my_about')
@@ -678,12 +680,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode=enums.ParseMode.HTML
         )
 
-    
     elif query.data.startswith("setgs"):
         ident, set_type, status, grp_id = query.data.split("#")
         userid = query.from_user.id if query.from_user else None
         if not await is_check_admin(client, int(grp_id), userid):
-            await query.answer("This Is Not For You!", show_alert=True)
+            await query.answer("ᴛʜɪs ɪs ɴᴏᴛ ғᴏʀ ʏᴏᴜ !", show_alert=True)
             return
 
         if status == "True":
@@ -697,78 +698,77 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         if settings is not None:
             buttons = [[
-                InlineKeyboardButton('Auto Filter', callback_data=f'setgs#auto_filter#{settings["auto_filter"]}#{grp_id}'),
-                InlineKeyboardButton('✅ Yes' if settings["auto_filter"] else '❌ No', callback_data=f'setgs#auto_filter#{settings["auto_filter"]}#{grp_id}')
+                InlineKeyboardButton('ᴀᴜᴛᴏ ғɪʟᴛᴇʀ', callback_data=f'setgs#auto_filter#{settings["auto_filter"]}#{grp_id}'),
+                InlineKeyboardButton('✅ ʏᴇs' if settings["auto_filter"] else '❌ ɴᴏ', callback_data=f'setgs#auto_filter#{settings["auto_filter"]}#{grp_id}')
             ],[
-                InlineKeyboardButton('File Secure', callback_data=f'setgs#file_secure#{settings["file_secure"]}#{grp_id}'),
-                InlineKeyboardButton('✅ Yes' if settings["file_secure"] else '❌ No', callback_data=f'setgs#file_secure#{settings["file_secure"]}#{grp_id}')
+                InlineKeyboardButton('ғɪʟᴇ sᴇᴄᴜʀᴇ', callback_data=f'setgs#file_secure#{settings["file_secure"]}#{grp_id}'),
+                InlineKeyboardButton('✅ ʏᴇs' if settings["file_secure"] else '❌ ɴᴏ', callback_data=f'setgs#file_secure#{settings["file_secure"]}#{grp_id}')
             ],[
-                InlineKeyboardButton('IMDb Poster', callback_data=f'setgs#imdb#{settings["imdb"]}#{grp_id}'),
-                InlineKeyboardButton('✅ Yes' if settings["imdb"] else '❌ No', callback_data=f'setgs#imdb#{settings["imdb"]}#{grp_id}')
+                InlineKeyboardButton('ɪᴍᴅʙ ᴘᴏsᴛᴇʀ', callback_data=f'setgs#imdb#{settings["imdb"]}#{grp_id}'),
+                InlineKeyboardButton('✅ ʏᴇs' if settings["imdb"] else '❌ ɴᴏ', callback_data=f'setgs#imdb#{settings["imdb"]}#{grp_id}')
             ],[
-                InlineKeyboardButton('Spelling Check', callback_data=f'setgs#spell_check#{settings["spell_check"]}#{grp_id}'),
-                InlineKeyboardButton('✅ Yes' if settings["spell_check"] else '❌ No', callback_data=f'setgs#spell_check#{settings["spell_check"]}#{grp_id}')
+                InlineKeyboardButton('sᴘᴇʟʟɪɴɢ ᴄʜᴇᴄᴋ', callback_data=f'setgs#spell_check#{settings["spell_check"]}#{grp_id}'),
+                InlineKeyboardButton('✅ ʏᴇs' if settings["spell_check"] else '❌ ɴᴏ', callback_data=f'setgs#spell_check#{settings["spell_check"]}#{grp_id}')
             ],[
-                InlineKeyboardButton('Auto Delete', callback_data=f'setgs#auto_delete#{settings["auto_delete"]}#{grp_id}'),
-                InlineKeyboardButton(f'{get_readable_time(DELETE_TIME)}' if settings["auto_delete"] else '❌ No', callback_data=f'setgs#auto_delete#{settings["auto_delete"]}#{grp_id}')
+                InlineKeyboardButton('ᴀᴜᴛᴏ ᴅᴇʟᴇᴛᴇ', callback_data=f'setgs#auto_delete#{settings["auto_delete"]}#{grp_id}'),
+                InlineKeyboardButton(f'{get_readable_time(DELETE_TIME)}' if settings["auto_delete"] else '❌ ɴᴏ', callback_data=f'setgs#auto_delete#{settings["auto_delete"]}#{grp_id}')
             ],[
-                InlineKeyboardButton('Welcome', callback_data=f'setgs#welcome#{settings["welcome"]}#{grp_id}',),
-                InlineKeyboardButton('✅ Yes' if settings["welcome"] else '❌ No', callback_data=f'setgs#welcome#{settings["welcome"]}#{grp_id}'),
+                InlineKeyboardButton('ᴡᴇʟᴄᴏᴍᴇ', callback_data=f'setgs#welcome#{settings["welcome"]}#{grp_id}',),
+                InlineKeyboardButton('✅ ʏᴇs' if settings["welcome"] else '❌ ɴᴏ', callback_data=f'setgs#welcome#{settings["welcome"]}#{grp_id}'),
             ],[
-                InlineKeyboardButton('Shortlink', callback_data=f'setgs#shortlink#{settings["shortlink"]}#{grp_id}'),
-                InlineKeyboardButton('✅ Yes' if settings["shortlink"] else '❌ No', callback_data=f'setgs#shortlink#{settings["shortlink"]}#{grp_id}'),
+                InlineKeyboardButton('sʜᴏʀᴛʟɪɴᴋ', callback_data=f'setgs#shortlink#{settings["shortlink"]}#{grp_id}'),
+                InlineKeyboardButton('✅ ʏᴇs' if settings["shortlink"] else '❌ ɴᴏ', callback_data=f'setgs#shortlink#{settings["shortlink"]}#{grp_id}'),
             ],[
-                InlineKeyboardButton('Result Page', callback_data=f'setgs#links#{settings["links"]}#{str(grp_id)}'),
-                InlineKeyboardButton('⛓ Link' if settings["links"] else '🧲 Button', callback_data=f'setgs#links#{settings["links"]}#{str(grp_id)}')
+                InlineKeyboardButton('ʀᴇsᴜʟᴛ ᴘᴀɢᴇ', callback_data=f'setgs#links#{settings["links"]}#{str(grp_id)}'),
+                InlineKeyboardButton('⛓ ʟɪɴᴋ' if settings["links"] else '🧲 ʙᴜᴛᴛᴏɴ', callback_data=f'setgs#links#{settings["links"]}#{str(grp_id)}')
             ],[
-                InlineKeyboardButton('Fsub', callback_data=f'setgs#is_fsub#{settings.get("is_fsub", IS_FSUB)}#{str(grp_id)}'),
-                InlineKeyboardButton('✅ On' if settings.get("is_fsub", IS_FSUB) else '❌ Off', callback_data=f'setgs#is_fsub#{settings.get("is_fsub", IS_FSUB)}#{str(grp_id)}')
+                InlineKeyboardButton('ғsᴜʙ', callback_data=f'setgs#is_fsub#{settings.get("is_fsub", IS_FSUB)}#{str(grp_id)}'),
+                InlineKeyboardButton('✅ ᴏɴ' if settings.get("is_fsub", IS_FSUB) else '❌ ᴏғғ', callback_data=f'setgs#is_fsub#{settings.get("is_fsub", IS_FSUB)}#{str(grp_id)}')
             ],[
-                InlineKeyboardButton('Stream', callback_data=f'setgs#is_stream#{settings.get("is_stream", IS_STREAM)}#{str(grp_id)}'),
-                InlineKeyboardButton('✅ On' if settings.get("is_stream", IS_STREAM) else '❌ Off', callback_data=f'setgs#is_stream#{settings.get("is_stream", IS_STREAM)}#{str(grp_id)}')
+                InlineKeyboardButton('sᴛʀᴇᴀᴍ', callback_data=f'setgs#is_stream#{settings.get("is_stream", IS_STREAM)}#{str(grp_id)}'),
+                InlineKeyboardButton('✅ ᴏɴ' if settings.get("is_stream", IS_STREAM) else '❌ ᴏғғ', callback_data=f'setgs#is_stream#{settings.get("is_stream", IS_STREAM)}#{str(grp_id)}')
             ],[
-                InlineKeyboardButton('❌ Close ❌', callback_data='close_data')
+                InlineKeyboardButton('❌ ᴄʟᴏsᴇ ❌', callback_data='close_data')
             ]]
             reply_markup = InlineKeyboardMarkup(buttons)
             await query.message.edit_reply_markup(reply_markup)
         else:
-            await query.message.edit_text("Something went wrong!")
+            await query.message.edit_text("sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ !")
             
     elif query.data == "delete_all":
         files = await Media.count_documents()
         await query.answer('Deleting...')
         await Media.collection.drop()
-        await query.message.edit_text(f"Successfully deleted {files} files")
+        await query.message.edit_text(f"sᴜᴄᴄᴇssғᴜʟʟʏ ᴅᴇʟᴇᴛᴇᴅ {files} ғɪʟᴇs")
         
     elif query.data.startswith("delete"):
         _, query_ = query.data.split("_", 1)
         deleted = 0
-        await query.message.edit('Deleting...')
+        await query.message.edit('ᴅᴇʟᴇᴛɪɴɢ...')
         total, files = await delete_files(query_)
         async for file in files:
             await Media.collection.delete_one({'_id': file.file_id})
             deleted += 1
-        await query.message.edit(f'Deleted {deleted} files in your database in your query {query_}')
+        await query.message.edit(f'ᴅᴇʟᴇᴛᴇᴅ {deleted} ғɪʟᴇs ɪɴ ʏᴏᴜʀ ᴅᴀᴛᴀʙᴀsᴇ ɪɴ ʏᴏᴜʀ ᴏ̨ᴜᴇʀʏ {query_}')
      
     elif query.data.startswith("send_all"):
         ident, key = query.data.split("#")
         user = query.message.reply_to_message.from_user.id
         if int(user) != 0 and query.from_user.id != int(user):
-            return await query.answer(f"Hello {query.from_user.first_name},\nDon't Click Other Results!", show_alert=True)
+            return await query.answer(f"ʜᴇʟʟᴏ {query.from_user.first_name},\nᴅᴏɴ'ᴛ ᴄʟɪᴄᴋ ᴏᴛʜᴇʀs ʀᴇsᴜʟᴛs !", show_alert=True)
         
         files = temp.FILES.get(key)
         if not files:
-            await query.answer(f"Hello {query.from_user.first_name},\nSend New Request Again!", show_alert=True)
+            await query.answer(f"ʜᴇʟʟᴏ {query.from_user.first_name},\nsᴇɴᴅ ɴᴇᴡ ʀᴇᴏ̨ᴜᴇsᴛ ᴀɢᴀɪɴ !", show_alert=True)
             return        
         await query.answer(url=f"https://t.me/{temp.U_NAME}?start=all_{query.message.chat.id}_{key}")
 
-
     elif query.data == "unmute_all_members":
         if not await is_check_admin(client, query.message.chat.id, query.from_user.id):
-            await query.answer("This Is Not For You!", show_alert=True)
+            await query.answer("ᴛʜɪs ɪs ɴᴏᴛ ғᴏʀ ʏᴏᴜ !", show_alert=True)
             return
         users_id = []
-        await query.message.edit("Unmute all started! This process maybe get some time...")
+        await query.message.edit("ᴜɴᴍᴜᴛᴇ ᴀʟʟ sᴛᴀʀᴛᴇᴅ ! ᴛʜɪs ᴘʀᴏᴄᴇss ᴍᴀʏʙᴇ ɢᴇᴛ sᴏᴍᴇ ᴛɪᴍᴇ...")
         try:
             async for member in client.get_chat_members(query.message.chat.id, filter=enums.ChatMembersFilter.RESTRICTED):
                 users_id.append(member.user.id)
@@ -776,20 +776,20 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 await client.unban_chat_member(query.message.chat.id, user_id)
         except Exception as e:
             await query.message.delete()
-            await query.message.reply(f'Something went wrong.\n\n<code>{e}</code>')
+            await query.message.reply(f'sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ.\n\n<code>{e}</code>')
             return
         await query.message.delete()
         if users_id:
-            await query.message.reply(f"Successfully unmuted <code>{len(users_id)}</code> users.")
+            await query.message.reply(f"sᴜᴄᴄᴇssғᴜʟʟʏ ᴜɴᴍᴜᴛᴇᴅ <code>{len(users_id)}</code> ᴜsᴇʀs.")
         else:
-            await query.message.reply('Nothing to unmute users.')
+            await query.message.reply('ɴᴏᴛʜɪɴɢ ᴛᴏ ᴜɴᴍᴜᴛᴇ ᴜsᴇʀs.')
 
     elif query.data == "unban_all_members":
         if not await is_check_admin(client, query.message.chat.id, query.from_user.id):
-            await query.answer("This Is Not For You!", show_alert=True)
+            await query.answer("ᴛʜɪs ɪs ɴᴏᴛ ғᴏʀ ʏᴏᴜ !", show_alert=True)
             return
         users_id = []
-        await query.message.edit("Unban all started! This process maybe get some time...")
+        await query.message.edit("ᴜɴʙᴀɴ ᴀʟʟ sᴛᴀʀᴛᴇᴅ ! ᴛʜɪs ᴘʀᴏᴄᴇss ᴍᴀʏʙᴇ ɢᴇᴛ sᴏᴍᴇ ᴛɪᴍᴇ...")
         try:
             async for member in client.get_chat_members(query.message.chat.id, filter=enums.ChatMembersFilter.BANNED):
                 users_id.append(member.user.id)
@@ -797,20 +797,20 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 await client.unban_chat_member(query.message.chat.id, user_id)
         except Exception as e:
             await query.message.delete()
-            await query.message.reply(f'Something went wrong.\n\n<code>{e}</code>')
+            await query.message.reply(f'sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ.\n\n<code>{e}</code>')
             return
         await query.message.delete()
         if users_id:
-            await query.message.reply(f"Successfully unban <code>{len(users_id)}</code> users.")
+            await query.message.reply(f"sᴜᴄᴄᴇssғᴜʟʟʏ ᴜɴʙᴀɴ <code>{len(users_id)}</code> ᴜsᴇʀs.")
         else:
-            await query.message.reply('Nothing to unban users.')
+            await query.message.reply('ɴᴏᴛʜɪɴɢ ᴛᴏ ᴜɴʙᴀɴ ᴜsᴇʀs.')
 
     elif query.data == "kick_muted_members":
         if not await is_check_admin(client, query.message.chat.id, query.from_user.id):
-            await query.answer("This Is Not For You!", show_alert=True)
+            await query.answer("ᴛʜɪs ɪs ɴᴏᴛ ғᴏʀ ʏᴏᴜ !", show_alert=True)
             return
         users_id = []
-        await query.message.edit("Kick muted users started! This process maybe get some time...")
+        await query.message.edit("ᴋɪᴄᴋ ᴍᴜᴛᴇᴅ ᴜsᴇʀs sᴛᴀʀᴛᴇᴅ ! ᴛʜɪs ᴘʀᴏᴄᴇss ᴍᴀʏʙᴇ ɢᴇᴛ sᴏᴍᴇ ᴛɪᴍᴇ...")
         try:
             async for member in client.get_chat_members(query.message.chat.id, filter=enums.ChatMembersFilter.RESTRICTED):
                 users_id.append(member.user.id)
@@ -818,20 +818,20 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 await client.ban_chat_member(query.message.chat.id, user_id, datetime.now() + timedelta(seconds=30))
         except Exception as e:
             await query.message.delete()
-            await query.message.reply(f'Something went wrong.\n\n<code>{e}</code>')
+            await query.message.reply(f'sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ.\n\n<code>{e}</code>')
             return
         await query.message.delete()
         if users_id:
-            await query.message.reply(f"Successfully kicked muted <code>{len(users_id)}</code> users.")
+            await query.message.reply(f"sᴜᴄᴄᴇssғᴜʟʟʏ ᴋɪᴄᴋᴇᴅ ᴍᴜᴛᴇᴅ <code>{len(users_id)}</code> ᴜsᴇʀs.")
         else:
-            await query.message.reply('Nothing to kick muted users.')
+            await query.message.reply('ɴᴏᴛʜɪɴɢ ᴛᴏ ᴋɪᴄᴋ ᴍᴜᴛᴇᴅ ᴜsᴇʀs.')
 
     elif query.data == "kick_deleted_accounts_members":
         if not await is_check_admin(client, query.message.chat.id, query.from_user.id):
-            await query.answer("This Is Not For You!", show_alert=True)
+            await query.answer("ᴛʜɪs ɪs ɴᴏᴛ ғᴏʀ ʏᴏᴜ !", show_alert=True)
             return
         users_id = []
-        await query.message.edit("Kick deleted accounts started! This process maybe get some time...")
+        await query.message.edit("ᴋɪᴄᴋ ᴅᴇʟᴇᴛᴇᴅ ᴀᴄᴄᴏᴜɴᴛs sᴛᴀʀᴛᴇᴅ ! ᴛʜɪs ᴘʀᴏᴄᴇss ᴍᴀʏʙᴇ ɢᴇᴛ sᴏᴍᴇ ᴛɪᴍᴇ...")
         try:
             async for member in client.get_chat_members(query.message.chat.id):
                 if member.user.is_deleted:
@@ -840,13 +840,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 await client.ban_chat_member(query.message.chat.id, user_id, datetime.now() + timedelta(seconds=30))
         except Exception as e:
             await query.message.delete()
-            await query.message.reply(f'Something went wrong.\n\n<code>{e}</code>')
+            await query.message.reply(f'sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ.\n\n<code>{e}</code>')
             return
         await query.message.delete()
         if users_id:
-            await query.message.reply(f"Successfully kicked deleted <code>{len(users_id)}</code> accounts.")
+            await query.message.reply(f"sᴜᴄᴄᴇssғᴜʟʟʏ ᴋɪᴄᴋᴇᴅ ᴅᴇʟᴇᴛᴇᴅ <code>{len(users_id)}</code> ᴀᴄᴄᴏᴜɴᴛs.")
         else:
-            await query.message.reply('Nothing to kick deleted accounts.')
+            await query.message.reply('ɴᴏᴛʜɪɴɢ ᴛᴏ ᴋɪᴄᴋ ᴅᴇʟᴇᴛᴇᴅ ᴀᴄᴄᴏᴜɴᴛs.')
 
 async def ai_spell_check(wrong_name):
     async def search_movie(wrong_name):
