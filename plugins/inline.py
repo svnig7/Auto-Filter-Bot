@@ -31,8 +31,8 @@ async def inline_search(bot, query):
 
     for file in files:
         reply_markup = get_reply_markup()
-        f_caption=FILE_CAPTION.format(
-            file_caption=files.caption or file.file_name
+        f_caption = FILE_CAPTION.format(
+            file_caption=file.caption or file.file_name
         )
         results.append(
             InlineQueryResultCachedDocument(
@@ -40,7 +40,9 @@ async def inline_search(bot, query):
                 document_file_id=file.file_id,
                 caption=f_caption,
                 description=f'Size: {get_size(file.file_size)}',
-                reply_markup=reply_markup))
+                reply_markup=reply_markup
+            )
+        )
 
     if results:
         switch_pm_text = f"{emoji.FILE_FOLDER} ʀᴇsᴜʟᴛs - {total}"
