@@ -82,17 +82,17 @@ class script(object):
 
 📝 ɴᴏᴛᴇ :- ʏᴏᴜ sʜᴏᴜʟᴅ ɴᴏᴛ ʙᴇ ᴀɴ ᴀɴᴏɴʏᴍᴏᴜs ᴀᴅᴍɪɴ ɪɴ ɢʀᴏᴜᴘ. sᴇɴᴅ ᴄᴏᴍᴍᴀɴᴅ ᴡɪᴛʜᴏᴜᴛ ʙᴇɪɴɢ ᴀɴ ᴀɴᴏɴʏᴍᴜs ᴀᴅᴍɪɴ.</b>"""
 
-    IMDB_TEMPLATE = """✅ ɪ ғᴏᴜɴᴅ : <code>{query}</code>
+    IMDB_TEMPLATE = """✅ **ɪ ғᴏᴜɴᴅ :** <code>{query}</code>
 
-🏷 ᴛɪᴛʟᴇ : <a href={url}>{title}</a>
-🎭 ɢᴇɴʀᴇs : {genres}
-📆 ʏᴇᴀʀ : <a href={url}/releaseinfo>{year}</a>
-🌟 ʀᴀᴛɪɴɢ : <a href={url}/ratings>{rating} / 10</a>
-☀️ ʟᴀɴɢᴜᴀɢᴇs : {languages}
-📀 ʀᴜɴᴛɪᴍᴇ : {runtime} ᴍɪɴᴜᴛᴇs
+🏷 **ᴛɪᴛʟᴇ :** <a href={url}>{title}</a>
+🎭 **ɢᴇɴʀᴇs :** {genres}
+📆 **ʏᴇᴀʀ :** <a href={url}/releaseinfo>{year}</a>
+🌟 **ʀᴀᴛɪɴɢ :** <a href={url}/ratings>{rating} / 10</a>
+☀️ **ʟᴀɴɢᴜᴀɢᴇs :** {languages}
+📀 **ʀᴜɴᴛɪᴍᴇ :** {runtime} ᴍɪɴᴜᴛᴇs
 
-🗣 ʀᴇᴏ̨ᴜᴇsᴛᴇᴅ ʙʏ : {message.from_user.mention}
-©️ ᴘᴏᴡᴇʀᴇᴅ ʙʏ : <b>{message.chat.title}</b>"""
+🗣 **ʀᴇᴏ̨ᴜᴇsᴛᴇᴅ ʙʏ :** {message.from_user.mention}
+©️ **ᴘᴏᴡᴇʀᴇᴅ ʙʏ :** <b>{message.chat.title}</b>"""
 
     FILE_CAPTION = """<i>{file_name}</i>
 
