@@ -20,15 +20,15 @@ async def aiRes(_, message):
         asked = message.text.split(None, 1)[1]
         if not asked:
             return await message.reply("ᴀsᴋ sᴏᴍᴇᴛʜɪɴɢ ᴀғᴛᴇʀ ᴀsᴋ ᴄᴏᴍᴍᴀɴᴅ !")
-        thinkStc = await message.reply_sticker(sticker=random.choice(STICKERS_IDS))
+        #thinkStc = await message.reply_sticker(sticker=random.choice(STICKERS_IDS))
         url = f"https://bisal-ai-api.vercel.app/biisal" 
         res = requests.post(url , data={'query' : asked})
         if res.status_code == 200:
             response = res.json().get("response")
-            await thinkStc.delete()
+            #await thinkStc.delete()
             await message.reply(f"<b>ʜᴇʏ {message.from_user.mention()},\n{response.lstrip() if response.startswith(' ') else response}</b>")
         else:
-            await thinkStc.delete()
+            #await thinkStc.delete()
             await message.reply("ᴍᴀᴜsᴀᴍ ᴋʜᴀʀᴀʙ ʜᴀɪ ! ᴛʜᴏᴅɪ ᴅᴇʀ ᴍᴇɪɴ ᴛʀʏ ᴋʀᴇ !\nᴏʀ ʀᴇᴘᴏʀᴛ ᴛᴏ ᴅᴇᴠᴇʟᴏᴘᴇʀ.")
     else:
         btn = [[
