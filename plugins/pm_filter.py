@@ -16,7 +16,7 @@ from fuzzywuzzy import process
 
 BUTTONS = {}
 CAP = {}
-REACTIONS = ["🔥", "❤️", "😍", "⚡"]
+REACTIONS = ["", "", "", ""]
 
 @Client.on_callback_query(filters.regex(r"^stream"))
 async def aks_downloader(bot, query):
@@ -25,8 +25,8 @@ async def aks_downloader(bot, query):
     watch = f"{URL}watch/{msg.id}"
     download = f"{URL}download/{msg.id}"
     btn= [[
-        InlineKeyboardButton("ᴡᴀᴛᴄʜ ᴏɴʟɪɴᴇ", url=watch),
-        InlineKeyboardButton("ꜰᴀsᴛ ᴅᴏᴡɴʟᴏᴀᴅ", url=download)
+        InlineKeyboardButton("ᴡᴀᴛᴄʜ", url=watch),
+        InlineKeyboardButton("ᴅᴏᴡɴʟᴏᴀᴅ", url=download)
     ],[
         InlineKeyboardButton('❌ ᴄʟᴏsᴇ ❌', callback_data='close_data')
     ]]
@@ -44,14 +44,14 @@ async def give_filter(client, message):
         btn = await is_subscribed(client, message, settings['fsub']) if settings.get('is_fsub', IS_FSUB) else None
         if btn:
             btn.append(
-                [InlineKeyboardButton("Unmute Me 🔕", callback_data=f"unmuteme#{chatid}")]
+                [InlineKeyboardButton("ᴜɴᴍᴜᴛᴇ ᴍᴇ 🔕", callback_data=f"unmuteme#{chatid}")]
             )
             reply_markup = InlineKeyboardMarkup(btn)
             try:
                 await client.restrict_chat_member(chatid, message.from_user.id, ChatPermissions(can_send_messages=False))
                 await message.reply_photo(
                     photo=random.choice(PICS),
-                    caption=f"👋 Hello {message.from_user.mention},\n\nPlease join and try again. 😇",
+                    caption=f"👋 ʜᴇʟʟᴏ {message.from_user.mention},\n\nᴘʟᴇᴀsᴇ ᴊᴏɪɴ ᴀɴᴅ ᴛʀʏ ᴀɢᴀɪɴ. 😇",
                     reply_markup=reply_markup,
                     parse_mode=enums.ParseMode.HTML
                 )
@@ -62,15 +62,15 @@ async def give_filter(client, message):
         pass
     if settings["auto_filter"]:
         if not userid:
-            await message.reply("I'm not working for anonymous admin!")
+            await message.reply("ɪ'ᴍ ɴᴏᴛ ᴡᴏʀᴋɪɴɢ ғᴏʀ ᴀɴᴏɴʏᴍᴏᴜs ᴀᴅᴍɪɴ !")
             return
         if message.chat.id == SUPPORT_GROUP:
             files, offset, total = await get_search_results(message.text)
             if files:
                 btn = [[
-                    InlineKeyboardButton("Here", url=FILMS_LINK)
+                    InlineKeyboardButton("ʜᴇʀᴇ", url=FILMS_LINK)
                 ]]
-                await message.reply_text(f'Total {total} results found in this group', reply_markup=InlineKeyboardMarkup(btn))
+                await message.reply_text(f'ᴛᴏᴛᴀʟ {total} ʀᴇsᴜʟᴛs ғᴏᴜɴᴅ ɪɴ ᴛʜɪs ɢʀᴏᴜᴘ', reply_markup=InlineKeyboardMarkup(btn))
             return
             
         if message.text.startswith("/"):
@@ -87,36 +87,36 @@ async def give_filter(client, message):
                         if message.reply_to_message:
                             try:
                                 sent_msg = await message.reply_to_message.forward(member.user.id)
-                                await sent_msg.reply_text(f"#Attention\n★ User: {message.from_user.mention}\n★ Group: {message.chat.title}\n\n★ <a href={message.reply_to_message.link}>Go to message</a>", disable_web_page_preview=True)
+                                await sent_msg.reply_text(f"#ᴀᴛᴛᴇɴᴛɪᴏɴ\n★ ᴜsᴇʀ : {message.from_user.mention}\n★ ɢʀᴏᴜᴘ : {message.chat.title}\n\n★ <a href={message.reply_to_message.link}>ɢᴏ ᴛᴏ ᴍᴇssᴀɢᴇ</a>", disable_web_page_preview=True)
                             except:
                                 pass
                         else:
                             try:
                                 sent_msg = await message.forward(member.user.id)
-                                await sent_msg.reply_text(f"#Attention\n★ User: {message.from_user.mention}\n★ Group: {message.chat.title}\n\n★ <a href={message.link}>Go to message</a>", disable_web_page_preview=True)
+                                await sent_msg.reply_text(f"#ᴀᴛᴛᴇɴᴛɪᴏɴ\n★ ᴜsᴇʀ : {message.from_user.mention}\n★ ɢʀᴏᴜᴘ : {message.chat.title}\n\n★ <a href={message.link}>ɢᴏ ᴛᴏ ᴍᴇssᴀɢᴇ</a>", disable_web_page_preview=True)
                             except:
                                 pass
             hidden_mentions = (f'[\u2064](tg://user?id={user_id})' for user_id in admins)
-            await message.reply_text('Report sent!' + ''.join(hidden_mentions))
+            await message.reply_text('ʀᴇᴘᴏʀᴛ sᴇɴᴛ !' + ''.join(hidden_mentions))
             return
 
         elif re.findall(r'https?://\S+|www\.\S+|t\.me/\S+', message.text):
             if await is_check_admin(client, message.chat.id, message.from_user.id):
                 return
             await message.delete()
-            return await message.reply('Links not allowed here!')
+            return await message.reply('ʟɪɴᴋs ɴᴏᴛ ᴀʟʟᴏᴡᴇᴅ ʜᴇʀᴇ !')
         
         elif '#request' in message.text.lower():
             if message.from_user.id in ADMINS:
                 return
-            await client.send_message(LOG_CHANNEL, f"#Request\n★ User: {message.from_user.mention}\n★ Group: {message.chat.title}\n\n★ Message: {re.sub(r'#request', '', message.text.lower())}")
-            await message.reply_text("Request sent!")
+            await client.send_message(LOG_CHANNEL, f"#ʀᴇᴏ̨ᴜᴇsᴛ\n★ ᴜsᴇʀ : {message.from_user.mention}\n★ ɢʀᴏᴜᴘ : {message.chat.title}\n\n★ ᴍᴇssᴀɢᴇ : {re.sub(r'#request', '', message.text.lower())}")
+            await message.reply_text("ʀᴇᴏ̨ᴜᴇsᴛ sᴇɴᴛ !")
             return
             
         else:
             await auto_filter(client, message)
     else:
-        k = await message.reply_text('Auto Filter Off! ❌')
+        k = await message.reply_text('ᴀᴜᴛᴏ ғɪʟᴛᴇʀ ᴏғғ ! ❌')
         await asyncio.sleep(5)
         await k.delete()
         try:
@@ -132,15 +132,15 @@ async def pm_search(client, message):
         files, n_offset, total = await get_search_results(message.text)
         if int(total) != 0:
             btn = [[
-                InlineKeyboardButton("Here", url=FILMS_LINK)
+                InlineKeyboardButton("ʜᴇʀᴇ", url=FILMS_LINK)
             ]]
-            await message.reply_text(f'Total {total} results found in this group', reply_markup=InlineKeyboardMarkup(btn))
+            await message.reply_text(f'ᴛᴏᴛᴀʟ {total} ʀᴇsᴜʟᴛs ғᴏᴜɴᴅ ɪɴ ᴛʜɪs ɢʀᴏᴜᴘ', reply_markup=InlineKeyboardMarkup(btn))
 
 @Client.on_callback_query(filters.regex(r"^next"))
 async def next_page(bot, query):
     ident, req, key, offset = query.data.split("_")
     if int(req) not in [query.from_user.id, 0]:
-        return await query.answer(f"Hello {query.from_user.first_name},\nDon't Click Other Results!", show_alert=True)
+        return await query.answer(f"ʜᴇʟʟᴏ {query.from_user.first_name},\nᴅᴏɴ'ᴛ ᴄʟɪᴄᴋ ᴏᴛʜᴇʀs ʀᴇsᴜʟᴛs !", show_alert=True)
     try:
         offset = int(offset)
     except:
@@ -148,7 +148,7 @@ async def next_page(bot, query):
     search = BUTTONS.get(key)
     cap = CAP.get(key)
     if not search:
-        await query.answer(f"Hello {query.from_user.first_name},\nSend New Request Again!", show_alert=True)
+        await query.answer(f"ʜᴇʟʟᴏ {query.from_user.first_name},\nsᴇɴᴅ ɴᴇᴡ ʀᴇᴏ̨ᴜᴇsᴛ ᴀɢᴀɪɴ !", show_alert=True)
         return
 
     files, n_offset, total = await get_search_results(search, offset=offset)
@@ -221,7 +221,7 @@ async def next_page(bot, query):
 async def languages_cb_handler(client: Client, query: CallbackQuery):
     _, key, req, offset = query.data.split("#")
     if int(req) != query.from_user.id:
-        return await query.answer(f"Hello {query.from_user.first_name},\nDon't Click Other Results!", show_alert=True)
+        return await query.answer(f"ʜᴇʟʟᴏ {query.from_user.first_name},\nᴅᴏɴ'ᴛ ᴄʟɪᴄᴋ ᴏᴛʜᴇʀs ʀᴇsᴜʟᴛs !", show_alert=True)
     btn = [[
         InlineKeyboardButton(text=lang.title(), callback_data=f"lang_search#{lang}#{key}#{offset}#{req}"),
     ]
@@ -234,12 +234,12 @@ async def languages_cb_handler(client: Client, query: CallbackQuery):
 async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
     _, lang, key, offset, req = query.data.split("#")
     if int(req) != query.from_user.id:
-        return await query.answer(f"Hello {query.from_user.first_name},\nDon't Click Other Results!", show_alert=True)
+        return await query.answer(f"ʜᴇʟʟᴏ {query.from_user.first_name},\nᴅᴏɴ'ᴛ ᴄʟɪᴄᴋ ᴏᴛʜᴇʀs ʀᴇsᴜʟᴛs !", show_alert=True)
 
     search = BUTTONS.get(key)
     cap = CAP.get(key)
     if not search:
-        await query.answer(f"Hello {query.from_user.first_name},\nSend New Request Again!", show_alert=True)
+        await query.answer(f"ʜᴇʟʟᴏ {query.from_user.first_name},\nsᴇɴᴅ ɴᴇᴡ ʀᴇᴏ̨ᴜᴇsᴛ ᴀɢᴀɪɴ !", show_alert=True)
         return 
 
     files, l_offset, total_results = await get_search_results(search, lang=lang)
