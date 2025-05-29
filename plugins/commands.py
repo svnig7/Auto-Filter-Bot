@@ -490,7 +490,7 @@ async def set_fsub(client, message):
     except IndexError:
         return await message.reply_text("ᴄᴏᴍᴍᴀɴᴅ ɪɴᴄᴏᴍᴘʟᴇᴛᴇ !\n\nᴄᴀɴ ᴍᴜʟᴛɪᴘʟᴇ ᴄʜᴀɴɴᴇʟ ᴀᴅᴅ, sᴇᴘᴀʀᴀᴛᴇ ʙʏ sᴘᴀᴄᴇs. ʟɪᴋᴇ : /set_fsub ɪᴅ1 ɪᴅ2 ɪᴅ3")
     except ValueError:
-        return await message.reply_text('ᴍᴀᴋᴇ sᴜʀᴇ ɪᴅ's ɪs ɪɴᴛᴇɢᴇʀ.')        
+        return await message.reply_text('ᴍᴀᴋᴇ sᴜʀᴇ ɪᴅ ɪs ɪɴᴛᴇɢᴇʀ.')        
     channels = "ᴄʜᴀɴɴᴇʟs :\n"
     for id in fsub_ids:
         try:
