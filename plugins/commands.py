@@ -141,10 +141,7 @@ async def start(client, message):
         settings = await get_settings(int(grp_id))
         for file in files:
             CAPTION = settings['caption']
-            f_caption = CAPTION.format(
-                file_caption=file.caption,
-                file_size = get_size(file.file_size)
-            )   
+            f_caption = CAPTION.format(file_caption=files.caption or file.file_name)
             if settings.get('is_stream', IS_STREAM):
                 btn = [[
                     InlineKeyboardButton("✛ ᴡᴀᴛᴄʜ & ᴅᴏᴡɴʟᴏᴀᴅ ✛", callback_data=f"stream#{file.file_id}")
