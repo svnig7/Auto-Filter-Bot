@@ -867,12 +867,12 @@ async def ai_spell_check(wrong_name):
         movie_list.remove(movie)
     return
 
-
 async def delSticker(st):
     try:
         await st.delete()
     except:
         pass
+        
 async def auto_filter(client, msg, spoll=False):
     thinkStc = ''
     thinkStc = await msg.reply_sticker(sticker=random.choice(STICKERS_IDS))
@@ -884,10 +884,10 @@ async def auto_filter(client, msg, spoll=False):
         if not files:
             if settings["spell_check"]:
                 await delSticker(thinkStc)
-                ai_sts = await msg.reply_text('<b>Ai is Cheking For Your Spelling. Please Wait.</b>')
+                ai_sts = await msg.reply_text('<b>ᴀɪ ɪs ᴄʜᴇᴋɪɴɢ ғᴏʀ ʏᴏᴜʀ sᴘᴇʟʟɪɴɢ. ᴘʟᴇᴀsᴇ ᴡᴀɪᴛ.</b>')
                 is_misspelled = await ai_spell_check(search)
                 if is_misspelled:
-                    await ai_sts.edit(f'<b>Ai Suggested <code>{is_misspelled}</code>\nSo Im Searching for <code>{is_misspelled}</code></b>')
+                    await ai_sts.edit(f'<b>ᴀɪ sᴜɢɢᴇsᴛᴇᴅ <code>{is_misspelled}</code>\nsᴏ ɪ'ᴍ sᴇᴀʀᴄʜɪɴɢ ғᴏʀ <code>{is_misspelled}</code></b>')
                     await asyncio.sleep(2)
                     msg.text = is_misspelled
                     await ai_sts.delete()
@@ -1002,6 +1002,7 @@ async def auto_filter(client, msg, spoll=False):
             else:
                 await delSticker(thinkStc)
                 await message.reply_photo(photo=imdb.get('poster'), caption=cap[:1024] + files_link + del_msg, reply_markup=InlineKeyboardMarkup(btn), quote=True)
+                
         except (MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty):
             pic = imdb.get('poster')
             poster = pic.replace('.jpg', "._V1_UX360.jpg")
@@ -1017,6 +1018,7 @@ async def auto_filter(client, msg, spoll=False):
             else:
                 await delSticker(thinkStc)
                 await message.reply_photo(photo=poster, caption=cap[:1024] + files_link + del_msg, reply_markup=InlineKeyboardMarkup(btn), quote=True)
+                
         except Exception as e:
             if settings["auto_delete"]:
                 await delSticker(thinkStc)
@@ -1048,8 +1050,8 @@ async def advantage_spell_chok(message):
     search = message.text
     google_search = search.replace(" ", "+")
     btn = [[
-        InlineKeyboardButton("⚠️ Instructions ⚠️", callback_data='instructions'),
-        InlineKeyboardButton("🔎 Search Google 🔍", url=f"https://www.google.com/search?q={google_search}")
+        InlineKeyboardButton("⚠️ ɪɴsᴛʀᴜᴄᴛɪᴏɴs ⚠️", callback_data='instructions'),
+        InlineKeyboardButton("🔎 sᴇᴀʀᴄʜ ɢᴏᴏɢʟᴇ 🔍", url=f"https://www.google.com/search?q={google_search}")
     ]]
     try:
         movies = await get_poster(search, bulk=True)
@@ -1082,7 +1084,7 @@ async def advantage_spell_chok(message):
     buttons.append(
         [InlineKeyboardButton("🚫 ᴄʟᴏsᴇ 🚫", callback_data="close_data")]
     )
-    s = await message.reply_photo(photo=random.choice(PICS), caption=f"👋 Hello {message.from_user.mention},\n\nI couldn't find the <b>'{search}'</b> you requested.\nSelect if you meant one of these? 👇", reply_markup=InlineKeyboardMarkup(buttons), reply_to_message_id=message.id)
+    s = await message.reply_photo(photo=random.choice(PICS), caption=f"👋 ʜᴇʟʟᴏ {message.from_user.mention},\n\nɪ ᴄᴏᴜʟᴅɴ'ᴛ ғɪɴᴅ ᴛʜᴇ <b>'{search}'</b> ʏᴏᴜ ʀᴇᴏ̨ᴜᴇsᴛᴇᴅ.\nsᴇʟᴇᴄᴛ ɪғ ʏᴏᴜ ᴍᴇᴀɴᴛ ᴏɴᴇ ᴏғ ᴛʜᴇsᴇ ? 👇", reply_markup=InlineKeyboardMarkup(buttons), reply_to_message_id=message.id)
     await asyncio.sleep(300)
     await s.delete()
     try:
