@@ -67,10 +67,11 @@ async def send_for_index(bot, message):
         reply_markup=ForceReply(True)
     )
 
-
 @Client.on_message(filters.private & filters.reply) 
 async def forceskip(client, message):      
-    reply_message = message.reply_to_message 
+    reply_message = message.reply_to_message
+    msg = None  # Initialize msg to avoid UnboundLocalError
+
     if (reply_message.reply_markup) and isinstance(reply_message.reply_markup, ForceReply):   
         skip_msg = message
         try:
@@ -78,39 +79,50 @@ async def forceskip(client, message):
         except:
             await message.reply("ɪɴᴠᴀʟɪᴅ ɴᴜᴍʙᴇʀ ᴘʀᴏᴠɪᴅᴇᴅ ᴜsɪɴɢ 0 ᴀs ᴀ sᴋɪᴘ ɴᴜᴍʙᴇʀ")
             skip = 0
+
         msg = await client.get_messages(message.chat.id, reply_message.id) 
         info = msg.reply_to_message
+
         if info.text:
-            regex = re.compile("(https://)?(t\.me/|telegram\.me/|telegram\.dog/)(c/)?(\d+|[a-zA-Z_0-9]+)/(\d+)$")
+            regex = re.compile(r"(https://)?(t\.me/|telegram\.me/|telegram\.dog/)(c/)?(\d+|[a-zA-Z_0-9]+)/(\d+)$")
             match = regex.match(info.text)
             if not match:
                 return await info.reply('ɪɴᴠᴀʟɪᴅ ʟɪɴᴋ')
+
             chat_id = match.group(4)
             last_msg_id = int(match.group(5))
+
             if chat_id.isnumeric():
-                chat_id  = int(("-100" + chat_id))
-        elif info.forward_from_chat.type == enums.ChatType.CHANNEL:
+                chat_id = int("-100" + chat_id)
+
+        elif info.forward_from_chat and info.forward_from_chat.type == enums.ChatType.CHANNEL:
             last_msg_id = info.forward_from_message_id
             chat_id = info.forward_from_chat.username or info.forward_from_chat.id
         else:
             return
 
-    await message.delete()
-    await msg.delete()
-    if message.from_user.id in ADMINS:      
-        buttons = [
-            [
-                InlineKeyboardButton('ʏᴇs',
-                                     callback_data=f'index#yes#{chat_id}#{last_msg_id}#{skip}')
-            ],
-            [
-                InlineKeyboardButton('ᴄʟᴏsᴇ', callback_data='close_data'),
+        # Proceed only if everything was parsed correctly
+        if message.from_user.id in ADMINS:      
+            buttons = [
+                [InlineKeyboardButton('ʏᴇs', callback_data=f'index#yes#{chat_id}#{last_msg_id}#{skip}')],
+                [InlineKeyboardButton('ᴄʟᴏsᴇ', callback_data='close_data')]
             ]
-        ]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        return await message.reply(
-            f'ᴅᴏ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ɪɴᴅᴇx ᴛʜɪs ᴄʜᴀɴɴᴇʟ / ɢʀᴏᴜᴘ ?\n\nᴄʜᴀᴛ ɪᴅ / ᴜsᴇʀɴᴀᴍᴇ : <code>{chat_id}</code>\nʟᴀsᴛ ᴍᴇssᴀɢᴇ ɪᴅ : <code>{last_msg_id}</code>',
-            reply_markup=reply_markup)
+            reply_markup = InlineKeyboardMarkup(buttons)
+
+            # Clean up messages
+            await message.delete()
+            if msg:
+                await msg.delete()
+
+            return await message.reply(
+                f'ᴅᴏ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ɪɴᴅᴇx ᴛʜɪs ᴄʜᴀɴɴᴇʟ / ɢʀᴏᴜᴘ ?\n\n'
+                f'ᴄʜᴀᴛ ɪᴅ / ᴜsᴇʀɴᴀᴍᴇ : <code>{chat_id}</code>\n'
+                f'ʟᴀsᴛ ᴍᴇssᴀɢᴇ ɪᴅ : <code>{last_msg_id}</code>',
+                reply_markup=reply_markup
+            )
+
+    else:
+        await message.reply("ɴᴏ ᴠᴀʟɪᴅ ʀᴇᴘʟʏ ғᴏᴜɴᴅ.")
 
 async def index_files_to_db(lst_msg_id, chat, msg, bot, skip):
     start_time = time.time()
