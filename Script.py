@@ -94,7 +94,7 @@ class script(object):
 🗣 **ʀᴇᴏ̨ᴜᴇsᴛᴇᴅ ʙʏ :** {message.from_user.mention}
 ©️ **ᴘᴏᴡᴇʀᴇᴅ ʙʏ :** <b>{message.chat.title}</b>"""
 
-    FILE_CAPTION = """<b>{caption}</b>
+    FILE_CAPTION = """<b>{file_caption}</b>
 
 🚫 ᴘʟᴇᴀsᴇ ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ᴄʟᴏsᴇ ʙᴜᴛᴛᴏɴ ɪꜰ ʏᴏᴜ ʜᴀᴠᴇ sᴇᴇɴ ᴛʜᴇ ᴍᴏᴠɪᴇ 🚫"""
 
