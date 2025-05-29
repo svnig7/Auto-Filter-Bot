@@ -21,19 +21,65 @@ REACTIONS = ["", "", "", ""]
 @Client.on_callback_query(filters.regex(r"^stream"))
 async def aks_downloader(bot, query):
     file_id = query.data.split('#', 1)[1]
-    msg = await bot.send_cached_media(chat_id=BIN_CHANNEL, file_id=file_id)
+
+    # Get original message
+    original_msg = await bot.get_messages(chat_id=query.message.chat.id, message_ids=int(file_id))
+    media = original_msg.document or original_msg.video or original_msg.audio
+
+    if not media:
+        return await query.answer("Unsupported media type", show_alert=True)
+
+    # Original caption
+    original_caption = original_msg.caption or ""
+
+    # Sender info
+    sender = original_msg.from_user
+    sender_info = f"👤 **User:** [{sender.first_name}](tg://user?id={sender.id})\n🆔 **User ID:** `{sender.id}`" if sender else "Anonymous user"
+
+    # Final log caption with user + original caption
+    caption = f"{sender_info}\n📝 **Message ID:** `{original_msg.id}`\n\n{original_caption}"
+
+    # Send media to BIN_CHANNEL with full log caption
+    if original_msg.document:
+        msg = await bot.send_document(
+            chat_id=BIN_CHANNEL,
+            document=media.file_id,
+            caption=caption,
+            file_name=media.file_name,
+            force_document=True
+        )
+    elif original_msg.video:
+        msg = await bot.send_video(
+            chat_id=BIN_CHANNEL,
+            video=media.file_id,
+            caption=caption
+        )
+    elif original_msg.audio:
+        msg = await bot.send_audio(
+            chat_id=BIN_CHANNEL,
+            audio=media.file_id,
+            caption=caption
+        )
+    else:
+        return await query.answer("Media type not supported for forwarding with caption.", show_alert=True)
+
+    # Streaming URLs
     watch = f"{URL}watch/{msg.id}"
     download = f"{URL}download/{msg.id}"
-    btn= [[
-        InlineKeyboardButton("ᴡᴀᴛᴄʜ", url=watch),
-        InlineKeyboardButton("ᴅᴏᴡɴʟᴏᴀᴅ", url=download)
-    ],[
-        InlineKeyboardButton('❌ ᴄʟᴏsᴇ ❌', callback_data='close_data')
-    ]]
+
+    # Inline buttons
+    btn = [
+        [
+            InlineKeyboardButton("ᴡᴀᴛᴄʜ", url=watch),
+            InlineKeyboardButton("ᴅᴏᴡɴʟᴏᴀᴅ", url=download)
+        ],
+        [InlineKeyboardButton('❌ ᴄʟᴏsᴇ ❌', callback_data='close_data')]
+    ]
+
     await query.edit_message_reply_markup(
         reply_markup=InlineKeyboardMarkup(btn)
     )
-
+    
 @Client.on_message(filters.group & filters.text & filters.incoming)
 async def give_filter(client, message):
     #await message.react(emoji=random.choice(REACTIONS))
