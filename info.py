@@ -88,7 +88,10 @@ CACHE_TIME = int(environ.get('CACHE_TIME', 300))
 MAX_BTN = int(environ.get('MAX_BTN', 10)) #don't change anything in Language 
 LANGUAGES = [language.lower() for language in environ.get('LANGUAGES', 'english hindi telugu tamil kannada malayalam').split()]
 IMDB_TEMPLATE = environ.get("IMDB_TEMPLATE", script.IMDB_TEMPLATE)
-FILE_CAPTION = environ.get("FILE_CAPTION")
+FILE_CAPTION = environ.get(
+    "FILE_CAPTION",
+    "<b>{caption}</b>\nsɪᴢᴇ : <code>{file_size}</code>"
+)
 SHORTLINK_URL = environ.get("SHORTLINK_URL", "onepagelink.in")
 SHORTLINK_API = environ.get("SHORTLINK_API", "f646357aa129cfbd7eb59bcba428096ab54ca950")
 VERIFY_EXPIRE = int(environ.get('VERIFY_EXPIRE', 86400)) # Add time in seconds
