@@ -64,14 +64,9 @@ async def give_filter(client, message):
         if not userid:
             await message.reply("ɪ'ᴍ ɴᴏᴛ ᴡᴏʀᴋɪɴɢ ғᴏʀ ᴀɴᴏɴʏᴍᴏᴜs ᴀᴅᴍɪɴ !")
             return
-        if message.chat.id == SUPPORT_GROUP:
-            files, offset, total = await get_search_results(message.text)
-            if files:
-                btn = [[
-                    InlineKeyboardButton("ʜᴇʀᴇ", url=FILMS_LINK)
-                ]]
-                await message.reply_text(f'ᴛᴏᴛᴀʟ {total} ʀᴇsᴜʟᴛs ғᴏᴜɴᴅ ɪɴ ᴛʜɪs ɢʀᴏᴜᴘ', reply_markup=InlineKeyboardMarkup(btn))
-            return
+
+        # REMOVE the group ID check and allow full result
+        await auto_filter(client, message)
             
         if message.text.startswith("/"):
             return
