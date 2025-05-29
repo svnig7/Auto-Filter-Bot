@@ -36,7 +36,7 @@ async def aks_downloader(bot, query):
 
 @Client.on_message(filters.group & filters.text & filters.incoming)
 async def give_filter(client, message):
-    await message.react(emoji=random.choice(REACTIONS))
+    #await message.react(emoji=random.choice(REACTIONS))
     settings = await get_settings(message.chat.id)
     chatid = message.chat.id
     userid = message.from_user.id if message.from_user else None
