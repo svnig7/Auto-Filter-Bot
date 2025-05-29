@@ -874,8 +874,8 @@ async def delSticker(st):
         pass
         
 async def auto_filter(client, msg, spoll=False):
-    thinkStc = ''
-    thinkStc = await msg.reply_sticker(sticker=random.choice(STICKERS_IDS))
+    #thinkStc = ''
+    #thinkStc = await msg.reply_sticker(sticker=random.choice(STICKERS_IDS))
     if not spoll:
         message = msg
         settings = await get_settings(message.chat.id)
@@ -883,7 +883,7 @@ async def auto_filter(client, msg, spoll=False):
         files, offset, total_results = await get_search_results(search)
         if not files:
             if settings["spell_check"]:
-                await delSticker(thinkStc)
+                #await delSticker(thinkStc)
                 ai_sts = await msg.reply_text('<b>ᴀɪ ɪs ᴄʜᴇᴋɪɴɢ ғᴏʀ ʏᴏᴜʀ sᴘᴇʟʟɪɴɢ. ᴘʟᴇᴀsᴇ ᴡᴀɪᴛ.</b>')
                 is_misspelled = await ai_spell_check(search)
                 if is_misspelled:
@@ -892,7 +892,7 @@ async def auto_filter(client, msg, spoll=False):
                     msg.text = is_misspelled
                     await ai_sts.delete()
                     return await auto_filter(client, msg)
-                await delSticker(thinkStc)
+                #await delSticker(thinkStc)
                 await ai_sts.delete()
                 await advantage_spell_chok(msg)
             return
@@ -991,7 +991,7 @@ async def auto_filter(client, msg, spoll=False):
     if imdb and imdb.get('poster'):
         try:
             if settings["auto_delete"]:
-                await delSticker(thinkStc)
+                #await delSticker(thinkStc)
                 k = await message.reply_photo(photo=imdb.get('poster'), caption=cap[:1024] + files_link + del_msg, reply_markup=InlineKeyboardMarkup(btn), quote=True)
                 await asyncio.sleep(DELETE_TIME)
                 await k.delete()
@@ -1000,14 +1000,14 @@ async def auto_filter(client, msg, spoll=False):
                 except:
                     pass
             else:
-                await delSticker(thinkStc)
+                #await delSticker(thinkStc)
                 await message.reply_photo(photo=imdb.get('poster'), caption=cap[:1024] + files_link + del_msg, reply_markup=InlineKeyboardMarkup(btn), quote=True)
                 
         except (MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty):
             pic = imdb.get('poster')
             poster = pic.replace('.jpg', "._V1_UX360.jpg")
             if settings["auto_delete"]:
-                await delSticker(thinkStc)
+                #await delSticker(thinkStc)
                 k = await message.reply_photo(photo=poster, caption=cap[:1024] + files_link + del_msg, reply_markup=InlineKeyboardMarkup(btn), quote=True)
                 await asyncio.sleep(DELETE_TIME)
                 await k.delete()
@@ -1016,12 +1016,12 @@ async def auto_filter(client, msg, spoll=False):
                 except:
                     pass
             else:
-                await delSticker(thinkStc)
+                #await delSticker(thinkStc)
                 await message.reply_photo(photo=poster, caption=cap[:1024] + files_link + del_msg, reply_markup=InlineKeyboardMarkup(btn), quote=True)
                 
         except Exception as e:
             if settings["auto_delete"]:
-                await delSticker(thinkStc)
+                #await delSticker(thinkStc)
                 k = await message.reply_text(cap + files_link + del_msg, reply_markup=InlineKeyboardMarkup(btn), disable_web_page_preview=True, quote=True)
                 await asyncio.sleep(DELETE_TIME)
                 await k.delete()
@@ -1030,11 +1030,11 @@ async def auto_filter(client, msg, spoll=False):
                 except:
                     pass
             else:
-                await delSticker(thinkStc)
+                #await delSticker(thinkStc)
                 await message.reply_text(cap + files_link + del_msg, reply_markup=InlineKeyboardMarkup(btn), disable_web_page_preview=True, quote=True)
     else:
         if settings["auto_delete"]:
-            await delSticker(thinkStc)
+            #await delSticker(thinkStc)
             k = await message.reply_text(cap + files_link + del_msg, reply_markup=InlineKeyboardMarkup(btn), disable_web_page_preview=True, quote=True)
             await asyncio.sleep(DELETE_TIME)
             await k.delete()
@@ -1043,7 +1043,7 @@ async def auto_filter(client, msg, spoll=False):
             except:
                 pass
         else:
-            await delSticker(thinkStc)
+            #await delSticker(thinkStc)
             await message.reply_text(cap + files_link + del_msg, reply_markup=InlineKeyboardMarkup(btn), disable_web_page_preview=True, quote=True)
 
 async def advantage_spell_chok(message):
