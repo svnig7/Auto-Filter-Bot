@@ -141,7 +141,6 @@ async def start(client, message):
         settings = await get_settings(int(grp_id))
         
         for file in files:
-            reply_markup = get_reply_markup()
             f_caption = FILE_CAPTION.format(
                 file_caption=file.caption or file.file_name
             )
