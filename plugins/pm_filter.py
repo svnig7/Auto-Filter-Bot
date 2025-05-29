@@ -887,7 +887,7 @@ async def auto_filter(client, msg, spoll=False):
                 ai_sts = await msg.reply_text('<b>ᴀɪ ɪs ᴄʜᴇᴋɪɴɢ ғᴏʀ ʏᴏᴜʀ sᴘᴇʟʟɪɴɢ. ᴘʟᴇᴀsᴇ ᴡᴀɪᴛ.</b>')
                 is_misspelled = await ai_spell_check(search)
                 if is_misspelled:
-                    await ai_sts.edit(f'<b>ᴀɪ sᴜɢɢᴇsᴛᴇᴅ <code>{is_misspelled}</code>\nsᴏ ɪ'ᴍ sᴇᴀʀᴄʜɪɴɢ ғᴏʀ <code>{is_misspelled}</code></b>')
+                    await ai_sts.edit(f"<b>ᴀɪ sᴜɢɢᴇsᴛᴇᴅ <code>{is_misspelled}</code>\nsᴏ ɪ'ᴍ sᴇᴀʀᴄʜɪɴɢ ғᴏʀ <code>{is_misspelled}</code></b>")
                     await asyncio.sleep(2)
                     msg.text = is_misspelled
                     await ai_sts.delete()
